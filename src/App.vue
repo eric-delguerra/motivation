@@ -1,10 +1,18 @@
 <template>
     <div id="app">
-        <transition name="fade">
-            <router-view/>
-        </transition>
+        <section class="hero is-fullheight">
+            <div class="hero-body">
+                <div class="container">
+                    <transition name="fade">
+                        <router-view/>
+                    </transition>
+                </div>
+            </div>
+        </section>
     </div>
 </template>
+
+
 <style lang="scss">
     // Import Bulma's core
     @import "~bulma/sass/utilities/_all";
@@ -27,9 +35,7 @@
             "warning": ($warning, $warning-invert),
             "danger": ($danger, $danger-invert),
             "twitter": ($twitter, $twitter-invert),
-            "cyan": ($cyan, $cyan-invert),
-            "serious": ($serious, $serious-invert),
-            "fun": ($fun, $fun-invert)
+            "cyan": ($cyan, $cyan-invert)
     );
 
     // Links

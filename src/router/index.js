@@ -4,7 +4,7 @@ import Home from '../views/Home.vue'
 import Fun from "@/views/Fun";
 import Serious from "@/views/Serious";
 
-Vue.use(VueRouter)
+Vue.use(VueRouter);
 
 const routes = [
     {
@@ -31,12 +31,12 @@ const routes = [
         path: '*',
         component: Home
     }
-]
+];
 
 const router = new VueRouter({
     mode: 'history',
     base: process.env.BASE_URL,
     routes
-})
+});
 
 export default router

@@ -38,6 +38,8 @@
 
 <script>
 
+    import firebase from 'firebase'
+
     export default {
         name: 'home',
         data() {
@@ -47,7 +49,9 @@
         },
         created() {
             if (this.$route.params.name) {
-                this.fixData((this.$route.params.name))
+                this.fixData(this.$route.params.name)
+            } else if (localStorage.getItem("name")){
+                this.fixData(localStorage.getItem("name"))
             } else {
                 this.prompt()
             }
@@ -58,22 +62,38 @@
                     message: `Présentez-vous !`,
                     inputAttrs: {
                         placeholder: 'Entreprise, prénom, etc',
-                        maxlength: 15
+                        maxlength: 15,
+                        minlength: 3,
+                        canCancel: [false, false, false],
                     },
                     trapFocus: true,
                     onConfirm: (value) => this.fixData(value)
                 })
             },
             fixData(value) {
-                this.enterpriseName = value
-                this.$buefy.toast.open({
-                    message: 'Bonjour ' + value,
-                    type: 'is-cyan',
-                    duration: 5000
-                })
+                if (value === "" || value === " " || value === "  "){
+                    this.prompt()
+                } else {
+                    this.enterpriseName = value
+                    this.$buefy.toast.open({
+                        message: 'Bonjour ' + value,
+                        type: 'is-cyan',
+                        duration: 5000
+                    })
+                    localStorage.setItem("name", value)
+                }
             },
             motivationView(view){
                 this.$router.push('page/'+view)
+                this.fireCall(view)
+            },
+            fireCall(value){
+                let db = firebase.firestore()
+                db.collection("analytics").add({
+                    name: this.enterpriseName,
+                    style: value,
+                    created_at: new Date()
+                })
             }
         }
     }
