@@ -1,28 +1,44 @@
 <template>
-    <div id="app">
-        <section class="hero is-fullheight">
-            <div class="hero-body">
-                <div class="container">
-                    <transition name="fade">
-                        <router-view/>
-                    </transition>
-                </div>
-            </div>
-        </section>
-    </div>
-</template>
+    <v-app>
+        <transition name="fade">
+            <router-view/>
+        </transition>
+<!--        <v-card height="50">-->
+<!--            <v-footer-->
+<!--                    absolute-->
+<!--                    class="font-weight-medium"-->
+<!--            >-->
+<!--                <v-col-->
+<!--                        class="text-center"-->
+<!--                        cols="12"-->
+<!--                >-->
+<!--                    {{ new Date().getFullYear() }} — <strong>Eric Del Guerra</strong>-->
+<!--                </v-col>-->
+<!--            </v-footer>-->
+<!--        </v-card>-->
+    </v-app>
 
+</template>
+<script>
+
+    export default {
+        name: 'home',
+
+        data: () => ({
+            //
+        }),
+    };
+</script>
 
 <style lang="scss">
+
     // Import Bulma's core
     @import "~bulma/sass/utilities/_all";
-
     // Set your colors
     $primary: #8c67ef;
     $primary-invert: findColorInvert($primary);
     $twitter: #4099FF;
     $twitter-invert: findColorInvert($twitter);
-
     // Setup $colors to use as bulma classes (e.g. 'is-twitter')
     $colors: (
             "white": ($white, $black),
@@ -37,12 +53,10 @@
             "twitter": ($twitter, $twitter-invert),
             "cyan": ($cyan, $cyan-invert)
     );
-
     // Links
     $link: $primary;
     $link-invert: $primary-invert;
     $link-focus-border: $primary;
-
     /*// Import Bulma and Buefy styles*/
     @import "~bulma";
     @import "~buefy/src/scss/buefy";
