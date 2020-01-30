@@ -1,5 +1,5 @@
 <template>
-    <div style="margin-top: .4rem">
+    <div class="page" style="margin-top: .4rem">
         <section id="serious" class="hero is-medium is-serious" @click="motivationView('Serious')">
             <div class="hero-body">
                 <div class="container">
@@ -74,12 +74,15 @@
                 if (value === "" || value === " " || value === "  ") {
                     this.prompt()
                 } else {
-                    this.enterpriseName = value
-                    this.$buefy.toast.open({
-                        message: 'Bonjour ' + value,
-                        type: 'is-cyan',
-                        duration: 5000
-                    })
+                    if (localStorage.getItem("firstPassage") !== "1"){
+                        this.enterpriseName = value
+                        this.$buefy.toast.open({
+                            message: 'Bonjour ' + value,
+                            type: 'is-cyan',
+                            duration: 5000
+                        })
+                        localStorage.setItem("firstPassage", "1")
+                    }
                     localStorage.setItem("name", value)
                 }
             },
@@ -89,11 +92,11 @@
             },
             fireCall(value) {
                 let db = firebase.firestore()
-                db.collection("analytics").add({
-                    name: this.enterpriseName,
-                    style: value,
-                    created_at: new Date()
-                })
+                // db.collection("analytics").add({
+                //     name: this.enterpriseName,
+                //     style: value,
+                //     created_at: new Date()
+                // })
             }
         }
     }

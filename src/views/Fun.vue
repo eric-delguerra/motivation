@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="page">
         <h1>
             Fun
         </h1>

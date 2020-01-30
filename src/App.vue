@@ -1,21 +1,8 @@
 <template>
     <v-app>
-        <transition name="fade">
+        <transition name="router-anim">
             <router-view/>
         </transition>
-<!--        <v-card height="50">-->
-<!--            <v-footer-->
-<!--                    absolute-->
-<!--                    class="font-weight-medium"-->
-<!--            >-->
-<!--                <v-col-->
-<!--                        class="text-center"-->
-<!--                        cols="12"-->
-<!--                >-->
-<!--                    {{ new Date().getFullYear() }} — <strong>Eric Del Guerra</strong>-->
-<!--                </v-col>-->
-<!--            </v-footer>-->
-<!--        </v-card>-->
     </v-app>
 
 </template>
@@ -60,4 +47,49 @@
     /*// Import Bulma and Buefy styles*/
     @import "~bulma";
     @import "~buefy/src/scss/buefy";
+
+    .page {
+        position: static;
+        width: inherit;
+    }
+
+    .router-anim-enter-active{
+        animation: enter 1s;
+        animation-delay: 0.5s;
+        opacity: 0;
+    }
+
+    .router-anim-leave-active{
+         animation: leave 1s;
+     }
+
+    .backHome:hover {
+        transition-duration: 0.3s;
+        transform: scale(1.1);
+    }
+
+    @keyframes enter {
+        from {
+            transform: scale(0);
+            opacity: 0;
+        }
+        to {
+            transform: scale(1);
+            opacity: 1;
+        }
+    }
+    @keyframes leave {
+        0% {
+            transform: scale(1);
+            opacity: 1;
+        }
+        50% {
+            transform: scale(0.5);
+            opacity: 0.6;
+        }
+        100% {
+            transform: translateX(-250px) scale(0.5);
+            opacity: 0;
+        }
+    }
 </style>

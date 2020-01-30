@@ -1,5 +1,6 @@
 <template>
-    <div class="container background">
+    <div class="container background page">
+        <v-btn class="ma-2 backHome" color="cyan" rounded dark elevation="3" :to="{path: 'retour'}">Home</v-btn>
         <div class="columns is-mobile is-centered">
             <h1 class="is-size-1 font-weight-bold font-italic column is-half titre">Re-bonjour <h1 class="underline is-size-1 font-weight-bold font-italic">{{enterpriseName}}</h1></h1>
         </div>
