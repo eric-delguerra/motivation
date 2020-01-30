@@ -4,9 +4,9 @@
             <div class="hero-body">
                 <div class="container">
                     <h1 class="title">
-                        Sérieusement ?
+                        De la rigueur ?
                     </h1>
-                    <h2 class="subtitle">
+                    <h2 class="subtitle" style="color: black">
                         Quand il faut on est pro.
                     </h2>
                 </div>
@@ -16,7 +16,10 @@
             <div class="hero-body">
                 <div class="container has-text-centered">
                     <h1 class="title" id="meet">
-                        Comment devons-nous nous rencontrer <h1 class="underline">{{enterpriseName}}</h1> ?
+                        <!--                        <span class="arrow">↑</span>   -->
+                        Que recherchez-vous <h1 class="underline" :style="{backgroundImage: underlineColor}">
+                        {{enterpriseName}}</h1> ?
+                        <!--                        <span class="arrow">↓</span>-->
                     </h1>
                 </div>
             </div>
@@ -25,10 +28,10 @@
             <div class="hero-body">
                 <div class="container has-text-right">
                     <h1 class="title">
-                        Personnellement.
+                        De la créativité ?
                     </h1>
-                    <h2 class="subtitle">
-                        Je ne mort pas !
+                    <h2 class="subtitle" style="color: black">
+                        Je ne mords pas !
                     </h2>
                 </div>
             </div>
@@ -44,7 +47,12 @@
         name: 'home',
         data() {
             return {
-                enterpriseName: this.$route.params.name
+                enterpriseName: this.$route.params.name,
+                randomColor: '',
+                colorsArray: [
+                    '#ff7eda',
+                    '#3df9c6'
+                ]
             }
         },
         created() {
@@ -55,6 +63,7 @@
             } else {
                 this.prompt()
             }
+            this.randomColor = this.getRandomColor()
         },
         methods: {
             prompt() {
@@ -74,8 +83,8 @@
                 if (value === "" || value === " " || value === "  ") {
                     this.prompt()
                 } else {
-                    if (localStorage.getItem("firstPassage") !== "1"){
-                        this.enterpriseName = value
+                    this.enterpriseName = value
+                    if (localStorage.getItem("firstPassage") !== "1") {
                         this.$buefy.toast.open({
                             message: 'Bonjour ' + value,
                             type: 'is-cyan',
@@ -97,6 +106,18 @@
                 //     style: value,
                 //     created_at: new Date()
                 // })
+            },
+            getRandomColor() {
+                return this.colorsArray[Math.floor(Math.random() * this.colorsArray.length)];
+
+
+
+
+            }
+        },
+        computed: {
+            underlineColor() {
+                return 'linear-gradient(\n transparent 28%, ' + this.randomColor + ' 28%, ' + this.randomColor + ' 55%, transparent 55%)'
             }
         }
     }
@@ -192,6 +213,7 @@
         }
 
         &:hover {
+            cursor: pointer;
             border-bottom: solid black 3px;
             filter: grayscale(0.1);
             background-position: right 50% bottom 65%;
@@ -238,6 +260,7 @@
         }
 
         &:hover {
+            cursor: pointer;
             filter: grayscale(0.4);
             background-position: right 50% bottom 55%;
             padding-top: 2rem;
@@ -247,18 +270,11 @@
 
     #meet {
         font-size: 1.5rem !important;
+    }
 
-        .underline {
-            font-size: 1.52rem !important;
-            font-weight: bold;
-            background-size: 1px 1em;
-            box-shadow: inset 0 -0.45em #ff7eda;
-            display: inline;
-            transition-duration: 0.8s;
-            &:hover{
-                box-shadow: inset 0 -0.2em #ff7eda;
-            }
-        }
+    .arrow {
+        font-size: 3rem;
+        margin: 3rem;
     }
 
 </style>

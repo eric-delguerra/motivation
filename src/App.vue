@@ -38,7 +38,8 @@
             "warning": ($warning, $warning-invert),
             "danger": ($danger, $danger-invert),
             "twitter": ($twitter, $twitter-invert),
-            "cyan": ($cyan, $cyan-invert)
+            "cyan": ($cyan, $cyan-invert),
+            "serious": (#5dd1ff, #5dd1ff)
     );
     // Links
     $link: $primary;
@@ -53,19 +54,26 @@
         width: inherit;
     }
 
-    .router-anim-enter-active{
+    .router-anim-enter-active {
         animation: enter 1s;
         animation-delay: 0.5s;
         opacity: 0;
     }
 
-    .router-anim-leave-active{
-         animation: leave 1s;
-     }
+    .router-anim-leave-active {
+        animation: leave 1s;
+    }
 
     .backHome:hover {
         transition-duration: 0.3s;
         transform: scale(1.1);
+    }
+
+    .underline {
+        font-weight: bold;
+        display: inline;
+        transition-duration: 0.8s;
+        padding: 1.3125rem .25rem 1.5625rem;
     }
 
     @keyframes enter {
@@ -78,6 +86,7 @@
             opacity: 1;
         }
     }
+
     @keyframes leave {
         0% {
             transform: scale(1);
