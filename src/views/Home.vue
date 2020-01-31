@@ -3,12 +3,9 @@
         <section id="serious" class="hero is-medium is-serious" @click="motivationView('Serious')">
             <div class="hero-body">
                 <div class="container">
-                    <h1 class="title">
+                    <h1 :style="{color: colorsArray[3]}" :class="[mobileWidth ? minTitleSerious : title]">
                         De la rigueur ?
                     </h1>
-                    <h2 class="subtitle" style="color: black">
-                        Quand il faut on est pro.
-                    </h2>
                 </div>
             </div>
         </section>
@@ -27,12 +24,9 @@
         <section id="fun" class="hero is-medium is-fun" @click="motivationView('Fun')">
             <div class="hero-body">
                 <div class="container has-text-right">
-                    <h1 class="title">
+                    <h1 :style="{color: colorsArray[3]}" :class="[mobileWidth ? minTitleFun : title]">
                         De la créativité ?
                     </h1>
-                    <h2 class="subtitle" style="color: black">
-                        Je ne mords pas !
-                    </h2>
                 </div>
             </div>
         </section>
@@ -50,9 +44,16 @@
                 enterpriseName: this.$route.params.name,
                 randomColor: '',
                 colorsArray: [
-                    '#ff7eda',
-                    '#3df9c6'
-                ]
+                    '#05F2DB',
+                    '#0388A6',
+                    '#F205CB',
+                    '#A61780'
+                ],
+                window:{
+                    width: 0
+                },
+                minTitleFun: 'minTitleFun',
+                minTitleSerious: 'minTitleSerious'
             }
         },
         created() {
@@ -64,6 +65,8 @@
                 this.prompt()
             }
             this.randomColor = this.getRandomColor()
+            window.addEventListener('resize', this.handleResize)
+            this.handleResize();
         },
         methods: {
             prompt() {
@@ -109,25 +112,36 @@
             },
             getRandomColor() {
                 return this.colorsArray[Math.floor(Math.random() * this.colorsArray.length)];
-
-
-
-
-            }
+            },
+            handleResize() {
+                this.window.width = window.innerWidth;
+            },
         },
         computed: {
             underlineColor() {
                 return 'linear-gradient(\n transparent 28%, ' + this.randomColor + ' 28%, ' + this.randomColor + ' 55%, transparent 55%)'
+            },
+            mobileWidth(){
+                if (this.window.width < 430){
+                    return true
+                } else {
+                    return false
+                }
             }
-        }
+        },
+        destroyed() {
+            window.removeEventListener('resize', this.handleResize)
+        },
     }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss" scoped>
     @import "~bulma/sass/utilities/_all";
+
+
+    $screen-sm-mobile: 370px;
     // Small tablets and large smartphones (landscape view)
-    $screen-sm-min: 528px;
+    $screen-sm-min: 430px;
 
     // Small tablets (portrait view)
     $screen-md-min: 768px;
@@ -137,6 +151,12 @@
 
     // Large tablets and desktops
     $screen-xl-min: 1200px;
+
+    @mixin smMobile {
+        @media (min-width: #{$screen-sm-mobile}) {
+            @content;
+        }
+    }
     // Small devices
     @mixin sm {
         @media (min-width: #{$screen-sm-min}) {
@@ -190,7 +210,6 @@
 
 
         h1 {
-            color: red;
             @include sm {
                 font-size: 1rem !important;
                 margin-left: -10px !important;
@@ -245,7 +264,6 @@
                 font-size: 2rem !important;
                 margin-right: 0;
             }
-            color: #0027bf !important;
         }
 
         h2 {
@@ -268,6 +286,34 @@
         }
     }
 
+    .minTitleFun {
+        font-size: 0.8rem;
+        font-weight: bold;
+        text-align: left;
+        margin-left: 13rem;
+
+        @media only screen and (max-device-width: 375px) {
+            margin-left: 11rem;
+        }
+        @media only screen and (max-device-width: 320px) {
+            margin-left: 9rem;
+        }
+    }
+
+    .minTitleSerious {
+        font-size: 0.8rem;
+        font-weight: bold;
+        text-align: left;
+        margin-left: 7rem;
+
+
+        @include smMobile {
+            margin-left: 9rem;
+            font-size: 1rem;
+        }
+
+    }
+
     #meet {
         font-size: 1.5rem !important;
     }
@@ -278,3 +324,4 @@
     }
 
 </style>
+<!-- Add "scoped" attribute to limit CSS to this component only -->
