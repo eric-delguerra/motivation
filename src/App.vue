@@ -39,7 +39,7 @@
             "danger": ($danger, $danger-invert),
             "twitter": ($twitter, $twitter-invert),
             "cyan": ($cyan, $cyan-invert),
-            "serious": (#5dd1ff, #5dd1ff)
+            "serious": (#05F2DB, $black)
     );
     // Links
     $link: $primary;
@@ -56,7 +56,7 @@
 
     .router-anim-enter-active {
         animation: enter 1s;
-        animation-delay: 0.5s;
+        animation-delay: 0.6s;
         opacity: 0;
     }
 
@@ -74,6 +74,10 @@
         display: inline;
         transition-duration: 0.8s;
         padding: 1.3125rem .25rem 1.5625rem;
+        @media screen and (max-device-width: 425px) {
+             font-size: 1rem;
+            background-size: 5rem 3.6rem;
+        }
     }
 
 

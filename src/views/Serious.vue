@@ -20,7 +20,7 @@
                     <span
                             :class="`headline  font-weight ${paragraf.color}--text paragrafAnim`"
                             v-text="paragraf.paragraf"
-                            :style="{animationDelay: paragraf.delay+'s'}"></span>
+                            :style="{animationDelay: paragraf.delay+'s'}"/>
                     </template>
                     <v-card class="paragrafAnim" :style="{animationDelay: paragraf.delay+'s'}" elevation="5" >
                         <div class="py-4 paragrafAnim" :style="{animationDelay: paragraf.delay+'s'}">
@@ -54,7 +54,7 @@
                     >
                         <v-container class="fill-height">
                             <v-row align="center">
-                                <strong class="display-4 font-weight-regular mr-6"></strong>
+                                <strong class="display-4 font-weight-regular mr-6"/>
                             </v-row>
                         </v-container>
                     </v-img>
@@ -81,10 +81,12 @@
                 </v-card-text>
             </v-card>
         </template>
-        <div v-intersect.quiet="onIntersect" class="text-center" style="padding: 2rem;">
-            <v-btn v-if="contact" class="mx-2 paragrafAnim" fab dark large outlined color="cyan" style="animation-delay: 0.3s">
+        <div v-intersect.quiet="onIntersect" class="text-center" style="padding: 3rem;">
+            <v-btn v-if="contact" class="mx-2 paragrafAnim" fab dark large color="secondary" style="animation-delay: 0.3s" href="mailto:delguerr<!-- SafeEtSansSpam -->a.eric@<!-- @dommage.fr -->gmail.com">
                 <v-icon dark>mdi-email</v-icon>
             </v-btn>
+            <br>
+            <p v-if="contact" class="secondary--text" style="padding-top: 1rem">Contactez-moi</p>
         </div>
     </div>
 </template>
@@ -166,6 +168,11 @@
             }
             window.addEventListener('resize', this.handleResize)
             this.handleResize();
+            if (parseInt(localStorage.getItem("firstPassage")) > 3){
+                for (let i = 0; i < this.paragrafs.length; i++){
+                    this.paragrafs[i].delay = i;
+                }
+            }
         },
         methods: {
             getRandomColor() {

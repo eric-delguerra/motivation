@@ -1,8 +1,9 @@
 <template>
-    <div class="page">
-        <div class="container is-centered">
-            <h1 class="testUnderline title font-weight-bold text-center">
-                Fun
+    <div class="container page">
+        <v-btn class="ma-2 backHome" color="error" rounded dark elevation="3" :to="{path: '/'}">Home</v-btn>
+        <div class="column is-centered">
+            <h1 class="title font-weight-bold text-center">
+                Ah ! Vous voulez voir
             </h1>
         </div>
     </div>
@@ -16,11 +17,4 @@
 
 <style lang="scss" scoped>
 
-    .testUnderline {
-        background-image: linear-gradient(
-                        transparent 28%, #3df9c6 28%, #3df9c6 55%, transparent 55%);
-        display: inline;
-
-
-    }
 </style>

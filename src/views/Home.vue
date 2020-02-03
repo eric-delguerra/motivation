@@ -3,7 +3,7 @@
         <section id="serious" class="hero is-medium is-serious" @click="motivationView('Serious')">
             <div class="hero-body">
                 <div class="container">
-                    <h1 :style="{color: colorsArray[3]}" :class="[mobileWidth ? minTitleSerious : title]">
+                    <h1 :style="{color: colorsArray[3]}" :class="[mobileWidth ? minTitleSerious : '']">
                         De la rigueur ?
                     </h1>
                 </div>
@@ -24,17 +24,23 @@
         <section id="fun" class="hero is-medium is-fun" @click="motivationView('Fun')">
             <div class="hero-body">
                 <div class="container has-text-right">
-                    <h1 :style="{color: colorsArray[3]}" :class="[mobileWidth ? minTitleFun : title]">
+                    <h1 :style="{color: colorsArray[3]}" :class="[mobileWidth ? minTitleFun : '']">
                         De la créativité ?
                     </h1>
                 </div>
             </div>
         </section>
+        <v-btn class="mx-2 contactAnim" fab dark large color="error" style="animation-delay: 0.3s"
+               :href="{email}">
+            <v-icon dark>mdi-email</v-icon>
+        </v-btn>
+        <v-btn v-if="admin" class="mx-2 adminAnim" fab dark large color="error" style="animation-delay: 0.3s">
+            <v-icon dark>mdi-wrench</v-icon>
+        </v-btn>
     </div>
 </template>
 
 <script>
-
     import firebase from 'firebase'
 
     export default {
@@ -49,11 +55,13 @@
                     '#F205CB',
                     '#A61780'
                 ],
-                window:{
+                window: {
                     width: 0
                 },
                 minTitleFun: 'minTitleFun',
-                minTitleSerious: 'minTitleSerious'
+                minTitleSerious: 'minTitleSerious',
+                admin: false,
+                email: 'mailto:delguerra.eric@gmail.com'
             }
         },
         created() {
@@ -78,7 +86,9 @@
                         minlength: 3,
                         canCancel: [false, false, false],
                     },
+                    confirmText: 'Valider',
                     trapFocus: true,
+                    type: 'is-serious',
                     onConfirm: (value) => this.fixData(value)
                 })
             },
@@ -86,14 +96,21 @@
                 if (value === "" || value === " " || value === "  ") {
                     this.prompt()
                 } else {
+                    if (value === "Moumousse") {
+                        this.admin = true
+                    }
                     this.enterpriseName = value
-                    if (localStorage.getItem("firstPassage") !== "1") {
+                    if (parseInt(localStorage.getItem("firstPassage")) < 1) {
                         this.$buefy.toast.open({
                             message: 'Bonjour ' + value,
                             type: 'is-cyan',
                             duration: 5000
                         })
                         localStorage.setItem("firstPassage", "1")
+                    } else {
+                        let nbr = parseInt(localStorage.getItem("firstPassage"))
+                        console.log(typeof nbr)
+                        localStorage.setItem("firstPassage", (nbr + 1).toString())
                     }
                     localStorage.setItem("name", value)
                 }
@@ -121,8 +138,8 @@
             underlineColor() {
                 return 'linear-gradient(\n transparent 28%, ' + this.randomColor + ' 28%, ' + this.randomColor + ' 55%, transparent 55%)'
             },
-            mobileWidth(){
-                if (this.window.width < 430){
+            mobileWidth() {
+                if (this.window.width < 430) {
                     return true
                 } else {
                     return false
@@ -157,6 +174,7 @@
             @content;
         }
     }
+
     // Small devices
     @mixin sm {
         @media (min-width: #{$screen-sm-min}) {
@@ -197,6 +215,9 @@
     }
 
     #serious {
+        /*background-image: url("../assets/seriouslyFilter.png"), url('../assets/seriously.jpg');*/
+        /*background-size: 50%, cover;*/
+        /*background-position: right 60rem bottom 0, right 50% bottom 75%;*/
         border: solid black 2px;
         width: 80%;
         margin: auto;
@@ -279,7 +300,7 @@
 
         &:hover {
             cursor: pointer;
-            filter: grayscale(0.4);
+            filter: grayscale(0.1);
             background-position: right 50% bottom 55%;
             padding-top: 2rem;
             box-shadow: 8px 5px 15px black;
@@ -316,11 +337,55 @@
 
     #meet {
         font-size: 1.5rem !important;
+        @media screen and (max-device-width: 425px) {
+            font-size: 1rem !important;
+        }
     }
 
     .arrow {
         font-size: 3rem;
         margin: 3rem;
+    }
+
+    .contactAnim {
+        position: absolute;
+        left: 1.7rem;
+        top: 5rem;
+        animation: contact 5s infinite;
+        @media screen and (max-device-width: 765px) {
+            margin: auto;
+            top: 1rem;
+            position: relative;
+            animation: none;
+        }
+    }
+
+    @keyframes contact {
+        0% {
+            top: 5rem;
+        }
+        10% {
+            top: 4rem;
+        }
+        15% {
+            top: 5rem;
+        }
+        20% {
+            top: 4.5rem;
+        }
+        25% {
+            top: 5rem;
+        }
+        100% {
+            top: 5rem;
+        }
+    }
+
+    .adminAnim {
+        position: absolute;
+        left: 6.5rem;
+        top: 5rem;
+        animation: contact 5s infinite;
     }
 
 </style>
