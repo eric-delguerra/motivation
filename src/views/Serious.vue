@@ -202,19 +202,4 @@
         padding-bottom: 2rem;
     }
 
-    .paragrafAnim {
-        animation: seriousEnter 1s forwards;
-        opacity: 0;
-    }
-
-
-    @keyframes seriousEnter {
-        from {
-            opacity: 0;
-        }
-        to {
-            opacity: 1;
-        }
-    }
-
 </style>

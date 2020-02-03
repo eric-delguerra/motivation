@@ -1,5 +1,5 @@
 <template>
-    <div class="page" style="margin-top: .4rem">
+    <div v-if="!mobileWidth" class="page" style="margin-top: .4rem">
         <section id="serious" class="hero is-medium is-serious" @click="motivationView('Serious')">
             <div class="hero-body">
                 <div class="container">
@@ -31,13 +31,53 @@
             </div>
         </section>
         <v-btn class="mx-2 contactAnim" fab dark large color="error" style="animation-delay: 0.3s"
-               :href="{email}">
+               @click="sendMail">
             <v-icon dark>mdi-email</v-icon>
         </v-btn>
         <v-btn v-if="admin" class="mx-2 adminAnim" fab dark large color="error" style="animation-delay: 0.3s">
             <v-icon dark>mdi-wrench</v-icon>
         </v-btn>
     </div>
+    <div v-else :style="{height: (window.height - 60) + 'px'}" style="max-width: 425px;">
+
+        <div class="container">
+            <h1 class="helloMobile">Bonjour</h1>
+            <h1 class="underlineHome" style="font-style: italic" :style="{backgroundImage: underlineColor}">
+                {{enterpriseName}}</h1>
+            <hr>
+            <h2 class="text-center">Motivations</h2>
+        </div>
+        <section id="serious" class="hero is-medium is-serious" @click="motivationView('Serious')">
+            <div class="hero-body">
+            </div>
+        </section>
+
+        <div class="container">
+            <h2 class="text-center">Compétences</h2>
+        </div>
+
+        <section id="serious" class="hero is-medium is-serious" @click="motivationView('Serious')">
+            <div class="hero-body">
+            </div>
+        </section>
+
+        <div class="overflow-hidden">
+            <v-bottom-navigation
+                    :input-value="showNav"
+                    color="secondary"
+                    grow
+                    :fixed="true"
+            >
+                <v-btn style="margin-top: 0.5rem;" @click="sendMail">
+                    <v-icon>mdi-email</v-icon>
+                </v-btn>
+                <v-btn style="margin-top: 0.5rem;" @click="goToLinkeidn">
+                    <v-icon>mdi-linkedin</v-icon>
+                </v-btn>
+            </v-bottom-navigation>
+        </div>
+    </div>
+
 </template>
 
 <script>
@@ -56,19 +96,23 @@
                     '#A61780'
                 ],
                 window: {
-                    width: 0
+                    width: 0,
+                    height: 0
                 },
                 minTitleFun: 'minTitleFun',
                 minTitleSerious: 'minTitleSerious',
                 admin: false,
-                email: 'mailto:delguerra.eric@gmail.com'
+                email: 'mailto:delguerra.eric@gmail.com',
+                showNav: true,
+                linkedinLink: 'https://www.linkedin.com/in/eric-del-guerra-66245480/'
+
             }
         },
         created() {
             if (this.$route.params.name) {
                 this.fixData(this.$route.params.name)
             } else if (localStorage.getItem("name")) {
-                this.fixData(localStorage.getItem("name"))
+                this.fixData(this.capitalizeFirstLetter(localStorage.getItem("name")))
             } else {
                 this.prompt()
             }
@@ -99,7 +143,7 @@
                     if (value === "Moumousse") {
                         this.admin = true
                     }
-                    this.enterpriseName = value
+                    this.enterpriseName = this.capitalizeFirstLetter(value)
                     if (parseInt(localStorage.getItem("firstPassage")) < 1) {
                         this.$buefy.toast.open({
                             message: 'Bonjour ' + value,
@@ -132,7 +176,17 @@
             },
             handleResize() {
                 this.window.width = window.innerWidth;
+                this.window.height = window.innerHeight;
             },
+            sendMail() {
+                window.open(this.email)
+            },
+            capitalizeFirstLetter(string) {
+                return string.charAt(0).toUpperCase() + string.slice(1);
+            },
+            goToLinkeidn() {
+                window.open(this.linkedinLink)
+            }
         },
         computed: {
             underlineColor() {
@@ -228,6 +282,11 @@
         background-position: right 50% bottom 75%;
         transition-duration: 0.7s;
         box-shadow: 4px 1px 5px black;
+
+        @media screen and (max-device-width: 425px) {
+            height: 9rem;
+            border-radius: 15px;
+        }
 
 
         h1 {
@@ -386,6 +445,29 @@
         left: 6.5rem;
         top: 5rem;
         animation: contact 5s infinite;
+    }
+
+    .helloMobile {
+        font-size: 2rem;
+        margin-left: 2rem;
+        animation-delay: 1s;
+        animation: helloMobileEnter 1.5s forwards;
+    }
+
+    .underlineHome {
+        font-weight: bold;
+        display: inline;
+        transition-duration: 0.8s;
+        padding: 1.3125rem .25rem 1.5625rem;
+        @media screen and (max-device-width: 425px) {
+            font-size: 3rem;
+            background-size: 10rem 3rem;
+            background-position-x: 4rem;
+            margin-left: 7rem;
+            animation-delay: 1.5s;
+            animation: helloMobileEnter 1.5s forwards;
+            opacity: 0;
+        }
     }
 
 </style>

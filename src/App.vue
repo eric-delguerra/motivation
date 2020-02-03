@@ -75,11 +75,10 @@
         transition-duration: 0.8s;
         padding: 1.3125rem .25rem 1.5625rem;
         @media screen and (max-device-width: 425px) {
-             font-size: 1rem;
+            font-size: 1rem;
             background-size: 5rem 3.6rem;
         }
     }
-
 
     @keyframes enter {
         from {
@@ -104,6 +103,32 @@
         100% {
             transform: translateX(-250px) scale(0.5);
             opacity: 0;
+        }
+    }
+
+    .paragrafAnim {
+        animation: seriousEnter 1s forwards;
+        opacity: 0;
+    }
+
+
+    @keyframes seriousEnter {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+
+    @keyframes helloMobileEnter {
+        from {
+            opacity: 0;
+            transform: translateX(-1rem);
+        }
+        to {
+            opacity: 1;
+            transform: translateX(0);
         }
     }
 </style>
