@@ -105,7 +105,6 @@
             opacity: 0;
         }
     }
-
     .paragrafAnim {
         animation: seriousEnter 1s forwards;
         opacity: 0;

@@ -45,21 +45,26 @@
             <h1 class="underlineHome" style="font-style: italic" :style="{backgroundImage: underlineColor}">
                 {{enterpriseName}}</h1>
             <hr>
-            <h2 class="text-center">Motivations</h2>
         </div>
-        <section id="serious" class="hero is-medium is-serious" @click="motivationView('Serious')">
-            <div class="hero-body">
-            </div>
-        </section>
-
         <div class="container">
-            <h2 class="text-center">Compétences</h2>
+            <div class="container">
+                <h2 class="text-center mobileTitle">Motivations</h2>
+            </div>
+            <section id="seriousMobile" class="hero is-medium is-serious" @click="motivationView('Serious')">
+                <div class="hero-body">
+                </div>
+            </section>
+
+            <div class="container">
+                <h2 class="text-center mobileTitle">Compétences</h2>
+            </div>
+
+            <section id="funMobile" class="hero is-medium is-serious" @click="motivationView('Fun')">
+                <div class="hero-body">
+                </div>
+            </section>
         </div>
 
-        <section id="serious" class="hero is-medium is-serious" @click="motivationView('Serious')">
-            <div class="hero-body">
-            </div>
-        </section>
 
         <div class="overflow-hidden">
             <v-bottom-navigation
@@ -68,11 +73,14 @@
                     grow
                     :fixed="true"
             >
+                <v-btn style="margin-top: 0.5rem;" @click="goToLinkeidn">
+                    <v-icon>mdi-linkedin</v-icon>
+                </v-btn>
                 <v-btn style="margin-top: 0.5rem;" @click="sendMail">
                     <v-icon>mdi-email</v-icon>
                 </v-btn>
-                <v-btn style="margin-top: 0.5rem;" @click="goToLinkeidn">
-                    <v-icon>mdi-linkedin</v-icon>
+                <v-btn style="margin-top: 0.5rem;" @click="goToGithub">
+                    <v-icon>mdi-github-circle</v-icon>
                 </v-btn>
             </v-bottom-navigation>
         </div>
@@ -104,8 +112,8 @@
                 admin: false,
                 email: 'mailto:delguerra.eric@gmail.com',
                 showNav: true,
-                linkedinLink: 'https://www.linkedin.com/in/eric-del-guerra-66245480/'
-
+                linkedinLink: 'https://www.linkedin.com/in/eric-del-guerra-66245480/',
+                gitHubLink: 'https://github.com/eric-delguerra'
             }
         },
         created() {
@@ -186,6 +194,9 @@
             },
             goToLinkeidn() {
                 window.open(this.linkedinLink)
+            },
+            goToGithub(){
+                window.open(this.gitHubLink)
             }
         },
         computed: {
@@ -268,7 +279,7 @@
         overflow: hidden; /* Hide scrollbars */
     }
 
-    #serious {
+    #serious, #seriousMobile, #funMobile {
         /*background-image: url("../assets/seriouslyFilter.png"), url('../assets/seriously.jpg');*/
         /*background-size: 50%, cover;*/
         /*background-position: right 60rem bottom 0, right 50% bottom 75%;*/
@@ -285,7 +296,7 @@
 
         @media screen and (max-device-width: 425px) {
             height: 9rem;
-            border-radius: 15px;
+            box-shadow: none;
         }
 
 
@@ -321,6 +332,9 @@
         }
     }
 
+    #funMobile {
+        background-image: url('../assets/serious.jpg');
+    }
 
     #fun {
         border: solid black 2px;
@@ -452,6 +466,7 @@
         margin-left: 2rem;
         animation-delay: 1s;
         animation: helloMobileEnter 1.5s forwards;
+        font-weight: bold;
     }
 
     .underlineHome {
@@ -468,6 +483,10 @@
             animation: helloMobileEnter 1.5s forwards;
             opacity: 0;
         }
+    }
+
+    .mobileTitle {
+        font-weight: bold;
     }
 
 </style>

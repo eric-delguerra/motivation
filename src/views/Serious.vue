@@ -1,6 +1,6 @@
 <template >
     <div class="container background page">
-        <v-btn class="ma-2 backHome" color="secondary" rounded dark elevation="3" :to="{path: '/'}">Home</v-btn>
+        <v-btn class="ma-2 backHome" color="secondary" dark elevation="3" :to="{path: '/'}">Home</v-btn>
         <div class="is-mobile is-top-right">
             <h1 class="is-size-2 font-weight-bold font-italic column is-offset-7 titre"
                 :style="{color: fontColors, textShadow: fontBorder}">Re-bonjour <h1
@@ -82,7 +82,7 @@
             </v-card>
         </template>
         <div v-intersect.quiet="onIntersect" class="text-center" style="padding: 3rem;">
-            <v-btn v-if="contact" class="mx-2 paragrafAnim" fab dark large color="secondary" style="animation-delay: 0.3s" href="mailto:delguerr<!-- SafeEtSansSpam -->a.eric@<!-- @dommage.fr -->gmail.com">
+            <v-btn v-if="contact" class="mx-2 paragrafAnim" fab dark large color="secondary" style="animation-delay: 0.3s" >
                 <v-icon dark>mdi-email</v-icon>
             </v-btn>
             <br>
