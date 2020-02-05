@@ -45,39 +45,157 @@
                     class="mx-auto"
                     max-width="375"
             >
-<!--                <v-card-->
-<!--                        dark-->
-<!--                        flat-->
-<!--                >-->
-<!--                    <v-img-->
-<!--                            src="../assets/seriously.jpg"-->
-<!--                            gradient="to top, rgba(0,0,0,.44), rgba(0,0,0,.44)"-->
-<!--                            aspect-ratio="2.3"-->
-<!--                    >-->
-<!--                        <v-container class="fill-height">-->
-<!--                            <v-row align="center">-->
-<!--                                <strong class="display-4 font-weight-regular mr-6"/>-->
-<!--                            </v-row>-->
-<!--                        </v-container>-->
-<!--                    </v-img>-->
-<!--                </v-card>-->
                 <v-card-text class="py-0">
                     <v-timeline
                             align-top
                             dense
                     >
                         <v-timeline-item
-                                :color="paragraf.color"
-                                v-for="paragraf in paragrafs"
+                                :color="paragrafs[0].color"
                                 :key="i"
-                                :icon="paragraf.icon"
+                                :icon="paragrafs[0].icon"
                                 :fill-dot="true"
                         >
-                            <v-row class="paragrafAnim pt-1" :style="{animationDelay: paragraf.delay+'s'}">
+                            <v-row class="paragrafAnim pt-1" :style="{animationDelay: paragrafs[0].delay+'s'}">
                                 <v-col>
-                                    <strong>{{paragraf.paragrafTitle}}</strong>
-                                    <div class="caption">{{paragraf.paragrafContent}}</div>
-                                    <div class="caption" v-for="elem in paragraf.list"> {{elem.text}}</div>
+                                    <strong class="titleFun">{{paragrafs[0].paragrafTitle}}</strong>
+                                    <div class="caption">
+                                        <li>
+                                            <v-icon color="info">mdi-language-html5</v-icon>
+                                            Html / Css / JavaScript
+                                        </li>
+                                        <li>
+                                            <v-icon color="info">mdi-language-csharp</v-icon>
+                                            PHP, C#
+                                        </li>
+                                        <li>
+                                            <v-icon color="info">mdi-vuejs</v-icon>
+                                            VueJs
+                                        </li>
+                                        <li>
+                                            <v-icon color="info">mdi-laravel</v-icon>
+                                            Laravel
+                                        </li>
+                                        <div class="caption">
+                                            <h3 style="font-weight: bold; margin-bottom: .5rem">Connaissances :</h3>
+                                            <li> Symfony
+                                            </li>
+                                            <li>Firebase
+                                                <v-icon color="info">mdi-firebase</v-icon>
+                                            </li>
+                                            <li> Sass
+                                            </li>
+                                        </div>
+                                        <div class="caption">
+                                            <h3 style="font-weight: bold; margin-bottom: .5rem">Autres outils :</h3>
+                                            <li>
+                                                <v-icon color="info">mdi-git</v-icon>
+                                                Git / SourceTree
+                                            </li>
+                                            <li>
+                                                Postman
+                                            </li>
+                                            <li>
+                                                FilleZila
+                                            </li>
+                                        </div>
+                                    </div>
+                                </v-col>
+                            </v-row>
+                        </v-timeline-item>
+                        <v-timeline-item
+                                :color="paragrafs[1].color"
+                                :key="i"
+                                :icon="paragrafs[1].icon"
+                                :fill-dot="true"
+                        >
+                            <v-row class="paragrafAnim pt-1" :style="{animationDelay: paragrafs[1].delay+'s'}">
+                                <v-col>
+                                    <strong class="titleFun">{{paragrafs[1].paragrafTitle}}</strong>
+                                    <div class="caption">
+                                        <h3 style="font-weight: bold; margin-bottom: .5rem">CAMPUS NUMERIQUE IN THE ALPS</h3>
+                                        <div class="" style="margin-top: 0.5rem">
+                                            <li>Décembre - 2018 - juin - 2020</li>
+                                            <li>BAC+2 ou Titre RNCP de niveau 3</li>
+                                        </div>
+
+                                    </div>
+                                    <div class="caption">
+                                        <h3 style="font-weight: bold; margin-bottom: .5rem">Langues</h3>
+                                        <div class="" style="margin-top: 0.5rem">
+                                            <li>Anglais: courant et technique</li>
+                                        </div>
+
+                                    </div>
+                                </v-col>
+                            </v-row>
+                        </v-timeline-item>
+                        <v-timeline-item
+                                :color="paragrafs[2].color"
+                                :key="i"
+                                :icon="paragrafs[2].icon"
+                                :fill-dot="true"
+                        >
+                            <v-row class="paragrafAnim pt-1" :style="{animationDelay: paragrafs[2].delay+'s'}">
+                                <v-col>
+                                    <strong class="titleFun">{{paragrafs[2].paragrafTitle}}</strong>
+                                    <div class="caption">
+                                        <h3 style="font-weight: bold; margin-bottom: .5rem">IZYFLOW (BSM SAS) <v-icon color="secondary">mdi-laptop-chromebook</v-icon></h3>
+                                        <div class="caption" style="margin-top: 0.5rem">
+                                            <li>Juin - 2019 - Juin - 2020</li>
+                                            <li>En alternance</li>
+                                            <li>Ajout de fonctionnalités sur la plateforme en place</li>
+                                        </div>
+                                    </div>
+                                    <div class="caption">
+                                        <h3 style="font-weight: bold; margin-bottom: .5rem">MAGIC CANDY BAR  <v-icon color="secondary">mdi-food-fork-drink</v-icon></h3>
+                                        <div class="caption" style="margin-top: 0.5rem">
+                                            <li>Mars - 2015 - Novembre - 2017</li>
+                                            <li>Manager</li>
+                                            <li>Gestion des stocks, prise de commande, encaissement et clôture de caisse, ouverture et fermeture de l’établissement. </li>
+                                        </div>
+                                    </div>
+                                </v-col>
+                            </v-row>
+                        </v-timeline-item>
+                        <v-timeline-item
+                                :color="paragrafs[3].color"
+                                :key="i"
+                                :icon="paragrafs[3].icon"
+                                :fill-dot="true"
+                        >
+                            <v-row class="paragrafAnim pt-1" :style="{animationDelay: paragrafs[3].delay+'s'}">
+                                <v-col>
+                                    <strong class="titleFun">{{paragrafs[3].paragrafTitle}}</strong>
+                                    <div class="caption">
+                                        <li>Curieux</li>
+                                        <li>Sérieux</li>
+                                        <li>Travail en équipe</li>
+                                        <li>Adaptabilité</li>
+                                    </div>
+                                </v-col>
+                            </v-row>
+                        </v-timeline-item>
+                        <v-timeline-item
+                                :color="paragrafs[4].color"
+                                :key="i"
+                                :icon="paragrafs[4].icon"
+                                :fill-dot="true"
+                        >
+                            <v-row class="paragrafAnim pt-1" :style="{animationDelay: paragrafs[4].delay+'s'}">
+                                <v-col>
+                                    <strong class="titleFun">{{paragrafs[4].paragrafTitle}}</strong>
+                                    <div class="caption">
+                                        <li>Magie</li>
+                                        <li>Théatre</li>
+                                        <li>Jeux en ligne en équipe  <v-icon color="info">mdi-steam</v-icon></li>
+                                        <div class="caption">
+                                            <h3 style="font-weight: bold; margin-bottom: .5rem">De temps en temps !</h3>
+                                            <li><v-icon color="info">mdi-blender-software</v-icon> Modélisation 3D avec Blender</li>
+                                            <li>Montages vidéos </li>
+                                            <li><v-icon color="info">mdi-unreal</v-icon> Découverte création de jeux vidéos avec Unity / Unreal</li>
+                                        </div>
+                                    </div>
                                 </v-col>
                             </v-row>
                         </v-timeline-item>
@@ -97,8 +215,10 @@
 </template>
 
 <script>
+    import Icon from "buefy";
     export default {
         name: "Serious",
+        components: {Icon},
         data() {
             return {
                 randomColor: '',
@@ -125,9 +245,9 @@
                     },
                     {
                         color: 'accent',
-                        delay: 1,
+                        delay: 2,
                         paragraf: '',
-                        paragrafTitle: 'Formations',
+                        paragrafTitle: 'Formation',
                         paragrafContent: '',
                         list: [],
                         icon: 'mdi-database-lock'
@@ -148,7 +268,7 @@
                         paragrafTitle: 'Soft Skill',
                         paragrafContent: '',
                         list: [],
-                        icon: 'mdi-blender-software'
+                        icon: 'mdi-nature-people'
                     },
                     {
                         color: 'secondary',
@@ -205,6 +325,9 @@
         computed: {
             underlineColor() {
                 return 'linear-gradient(\n transparent 28%, ' + this.randomColor + ' 28%, ' + this.randomColor + ' 55%, transparent 55%)'
+            },
+            randomColor() {
+                return this.getRandomColor()
             }
         },
         destroyed() {
@@ -217,6 +340,23 @@
 
     .titre {
         padding-bottom: 2rem;
+    }
+
+    .titleFun {
+        font-size: 1rem;
+    }
+
+    .caption {
+        margin-top: 1rem;
+        margin-left: 1rem;
+
+        h3 {
+            font-size: 0.8rem;
+        }
+
+        li {
+            font-size: 0.8rem;
+        }
     }
 
 </style>

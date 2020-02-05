@@ -131,7 +131,7 @@
         methods: {
             prompt() {
                 this.$buefy.dialog.prompt({
-                    message: `Présentez-vous !`,
+                    message: `Pour une navigation personnalisée`,
                     inputAttrs: {
                         placeholder: 'Entreprise, prénom, etc',
                         maxlength: 15,

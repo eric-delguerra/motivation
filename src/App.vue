@@ -1,6 +1,6 @@
 <template>
     <v-app>
-        <transition name="router-anim">
+        <transition :name="mobileWidth">
             <router-view/>
         </transition>
     </v-app>
@@ -12,8 +12,30 @@
         name: 'home',
 
         data: () => ({
-            //
+            window: {
+                width: 0,
+                height: 0
+            },
         }),
+        created(){
+            window.addEventListener('resize', this.handleResize)
+            this.handleResize();
+        },
+        method:{
+            handleResize() {
+                this.window.width = window.innerWidth;
+                this.window.height = window.innerHeight;
+            },
+        },
+        computed: {
+            mobileWidth() {
+                if (this.window.width < 430) {
+                    return "router-anim"
+                } else {
+                    return "fade"
+                }
+            }
+        }
     };
 </script>
 
