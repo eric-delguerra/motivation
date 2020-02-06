@@ -1,14 +1,14 @@
 <template>
     <div class="container background page">
-        <v-btn class="ma-2 backHome" color="error" dark elevation="3" :to="{path: '/'}">Home</v-btn>
-        <div class="is-mobile is-top-right">
+        <v-btn class="ma-2 backHome" color="error" elevation="3" :to="{path: '/'}"><v-icon>mdi-home</v-icon></v-btn>
+        <div class="is-mobile is-top-right" style="margin-left: 1rem">
             <h1 class="is-size-2 font-weight-bold font-italic column is-offset-7 titre"
                 :style="{color: fontColors, textShadow: fontBorder}">Re-bonjour <h1
                     class="underline is-size-2 font-weight-bold font-italic"
                     :style="{backgroundImage: underlineColor, color: fontColors, textShadow: fontBorder}">
                 {{enterpriseName}}</h1></h1>
         </div>
-        <template v-if="window.width > 450">
+        <template v-if="window.width > 650">
             <v-timeline
                     :align-top="true">
                 <v-timeline-item
@@ -98,6 +98,9 @@
                                             <li>
                                                 FilleZila
                                             </li>
+                                            <li>
+                                                Methodes Agiles
+                                            </li>
                                         </div>
                                     </div>
                                 </v-col>
@@ -113,7 +116,8 @@
                                 <v-col>
                                     <strong class="titleFun">{{paragrafs[1].paragrafTitle}}</strong>
                                     <div class="caption">
-                                        <h3 style="font-weight: bold; margin-bottom: .5rem">CAMPUS NUMERIQUE IN THE ALPS</h3>
+                                        <h3 style="font-weight: bold; margin-bottom: .5rem">CAMPUS NUMERIQUE IN THE
+                                            ALPS</h3>
                                         <div class="" style="margin-top: 0.5rem">
                                             <li>Décembre - 2018 - juin - 2020</li>
                                             <li>BAC+2 ou Titre RNCP de niveau 3</li>
@@ -140,7 +144,9 @@
                                 <v-col>
                                     <strong class="titleFun">{{paragrafs[2].paragrafTitle}}</strong>
                                     <div class="caption">
-                                        <h3 style="font-weight: bold; margin-bottom: .5rem">IZYFLOW (BSM SAS) <v-icon color="secondary">mdi-laptop-chromebook</v-icon></h3>
+                                        <h3 style="font-weight: bold; margin-bottom: .5rem">IZYFLOW (BSM SAS)
+                                            <v-icon color="secondary">mdi-laptop-chromebook</v-icon>
+                                        </h3>
                                         <div class="caption" style="margin-top: 0.5rem">
                                             <li>Juin - 2019 - Juin - 2020</li>
                                             <li>En alternance</li>
@@ -148,11 +154,15 @@
                                         </div>
                                     </div>
                                     <div class="caption">
-                                        <h3 style="font-weight: bold; margin-bottom: .5rem">MAGIC CANDY BAR  <v-icon color="secondary">mdi-food-fork-drink</v-icon></h3>
+                                        <h3 style="font-weight: bold; margin-bottom: .5rem">MAGIC CANDY BAR
+                                            <v-icon color="secondary">mdi-food-fork-drink</v-icon>
+                                        </h3>
                                         <div class="caption" style="margin-top: 0.5rem">
                                             <li>Mars - 2015 - Novembre - 2017</li>
                                             <li>Manager</li>
-                                            <li>Gestion des stocks, prise de commande, encaissement et clôture de caisse, ouverture et fermeture de l’établissement. </li>
+                                            <li>Gestion des stocks, prise de commande, encaissement et clôture de
+                                                caisse, ouverture et fermeture de l’établissement.
+                                            </li>
                                         </div>
                                     </div>
                                 </v-col>
@@ -188,12 +198,20 @@
                                     <div class="caption">
                                         <li>Magie</li>
                                         <li>Théatre</li>
-                                        <li>Jeux en ligne en équipe  <v-icon color="info">mdi-steam</v-icon></li>
+                                        <li>Jeux en ligne en équipe
+                                            <v-icon color="info">mdi-steam</v-icon>
+                                        </li>
                                         <div class="caption">
                                             <h3 style="font-weight: bold; margin-bottom: .5rem">De temps en temps !</h3>
-                                            <li><v-icon color="info">mdi-blender-software</v-icon> Modélisation 3D avec Blender</li>
-                                            <li>Montages vidéos </li>
-                                            <li><v-icon color="info">mdi-unreal</v-icon> Découverte création de jeux vidéos avec Unity / Unreal</li>
+                                            <li>
+                                                <v-icon color="info">mdi-blender-software</v-icon>
+                                                Modélisation 3D avec Blender
+                                            </li>
+                                            <li>Montages vidéos</li>
+                                            <li>
+                                                <v-icon color="info">mdi-unreal</v-icon>
+                                                Découverte création de jeux vidéos avec Unity / Unreal
+                                            </li>
                                         </div>
                                     </div>
                                 </v-col>
@@ -205,7 +223,8 @@
         </template>
         <div v-intersect.quiet="onIntersect" class="text-center" style="padding: 3rem;">
             <v-btn v-if="contact" class="mx-2 paragrafAnim" fab dark large color="secondary"
-                   style="animation-delay: 0.3s">
+                   style="animation-delay: 0.3s"
+            @click="sendMail">
                 <v-icon dark>mdi-email</v-icon>
             </v-btn>
             <br>
@@ -216,6 +235,7 @@
 
 <script>
     import Icon from "buefy";
+
     export default {
         name: "Serious",
         components: {Icon},
@@ -291,7 +311,8 @@
                 window: {
                     width: 0
                 },
-                contact: false
+                contact: false,
+                email: 'mailto:delguerra.eric@gmail.com',
             }
         },
         created() {
@@ -320,7 +341,10 @@
             },
             onIntersect(entries, observer, isIntersecting) {
                 this.contact = true
-            }
+            },
+            sendMail() {
+                window.open(this.email)
+            },
         },
         computed: {
             underlineColor() {
@@ -328,7 +352,7 @@
             },
             randomColor() {
                 return this.getRandomColor()
-            }
+            },
         },
         destroyed() {
             window.removeEventListener('resize', this.handleResize)

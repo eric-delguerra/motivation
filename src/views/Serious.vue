@@ -1,13 +1,13 @@
 <template >
     <div class="container background page">
-        <v-btn class="ma-2 backHome" color="secondary" dark elevation="3" :to="{path: '/'}">Home</v-btn>
+        <v-btn class="ma-2 backHome" color="error" elevation="3" :to="{path: '/'}"><v-icon>mdi-home</v-icon></v-btn>
         <div class="is-mobile is-top-right">
             <h1 class="is-size-2 font-weight-bold font-italic column is-offset-7 titre"
                 :style="{color: fontColors, textShadow: fontBorder}">Re-bonjour <h1
                     class="underline is-size-2 font-weight-bold font-italic"
                     :style="{backgroundImage: underlineColor, color: fontColors, textShadow: fontBorder}">{{enterpriseName}}</h1></h1>
         </div>
-        <template v-if="window.width > 450">
+        <template v-if="window.width > 650">
             <v-timeline
             :align-top="true">
                 <v-timeline-item
@@ -82,7 +82,7 @@
             </v-card>
         </template>
         <div v-intersect.quiet="onIntersect" class="text-center" style="padding: 3rem;">
-            <v-btn v-if="contact" class="mx-2 paragrafAnim" fab dark large color="secondary" style="animation-delay: 0.3s" >
+            <v-btn v-if="contact" class="mx-2 paragrafAnim" fab dark large color="secondary" style="animation-delay: 0.3s" @click="sendMail" >
                 <v-icon dark>mdi-email</v-icon>
             </v-btn>
             <br>
@@ -105,7 +105,7 @@
                         align: 'center',
                         paragraf: '" Je recherche une alternance "',
                         paragrafTitle: 'Présentation',
-                        paragrafContent: 'Je m\'appelle Eric, je vis sur Grenoble et je recherche activement une entreprise pour une future alternance en Service Mobiles et Interface Nomade\n'
+                        paragrafContent: 'Je m\'appelle Eric, je vis sur Grenoble et je recherche une entreprise pour une future alternance en Service Mobiles et Interface Nomade\n'
                     },
                     {
                         color: 'accent',
@@ -156,7 +156,8 @@
                 window: {
                     width: 0
                 },
-                contact: false
+                contact: false,
+                email: 'mailto:delguerra.eric@gmail.com',
             }
         },
         created() {
@@ -183,7 +184,10 @@
             },
             onIntersect (entries, observer, isIntersecting) {
                 this.contact = true
-            }
+            },
+            sendMail() {
+                window.open(this.email)
+            },
         },
         computed: {
             underlineColor() {

@@ -1,88 +1,92 @@
 <template>
-    <div v-if="!mobileWidth" class="page" style="margin-top: .4rem">
-        <section id="serious" class="hero is-medium is-serious" @click="motivationView('Serious')">
-            <div class="hero-body">
-                <div class="container">
-                    <h1 :style="{color: colorsArray[3]}" :class="[mobileWidth ? minTitleSerious : '']">
-                        De la rigueur ?
-                    </h1>
+    <div>
+        <div v-if="!mobileWidth" class="page" style="margin-top: 2rem">
+            <section id="serious" class="hero is-medium is-serious" @click="motivationView('Serious')">
+                <div class="hero-body">
+                    <div class="container">
+                        <h1 :style="{color: colorsArray[3]}" :class="[mobileWidth ? minTitleSerious : '']">
+                            De la rigueur ?
+                        </h1>
+                    </div>
                 </div>
-            </div>
-        </section>
-        <section class="hero">
-            <div class="hero-body">
-                <div class="container has-text-centered">
-                    <h1 class="title" id="meet">
-                        <!--                        <span class="arrow">↑</span>   -->
-                        Que recherchez-vous <h1 class="underline" :style="{backgroundImage: underlineColor}">
-                        {{enterpriseName}}</h1> ?
-                        <!--                        <span class="arrow">↓</span>-->
-                    </h1>
+            </section>
+            <section class="hero">
+                <div class="hero-body">
+                    <div class="container has-text-centered">
+                        <h1 class="title" id="meet">
+                            <!--                        <span class="arrow">↑</span>   -->
+                            Que recherchez-vous <h1 class="underline" :style="{backgroundImage: underlineColor}">
+                            {{enterpriseName}}</h1> ?
+                            <!--                        <span class="arrow">↓</span>-->
+                        </h1>
+                    </div>
                 </div>
-            </div>
-        </section>
-        <section id="fun" class="hero is-medium is-fun" @click="motivationView('Fun')">
-            <div class="hero-body">
-                <div class="container has-text-right">
-                    <h1 :style="{color: colorsArray[3]}" :class="[mobileWidth ? minTitleFun : '']">
-                        De la créativité ?
-                    </h1>
+            </section>
+            <section id="fun" class="hero is-medium is-fun" @click="motivationView('Fun')">
+                <div class="hero-body">
+                    <div class="container has-text-right">
+                        <h1 :style="{color: colorsArray[3]}" :class="[mobileWidth ? minTitleFun : '']">
+                            De la créativité ?
+                        </h1>
+                    </div>
                 </div>
-            </div>
-        </section>
-        <v-btn class="mx-2 contactAnim" fab dark large color="error" style="animation-delay: 0.3s"
-               @click="sendMail">
-            <v-icon dark>mdi-email</v-icon>
-        </v-btn>
-        <v-btn v-if="admin" class="mx-2 adminAnim" fab dark large color="error" style="animation-delay: 0.3s">
-            <v-icon dark>mdi-wrench</v-icon>
-        </v-btn>
-    </div>
-    <div v-else :style="{height: (window.height - 60) + 'px'}" style="max-width: 425px;">
-
-        <div class="container">
-            <h1 class="helloMobile">Bonjour</h1>
-            <h1 class="underlineHome" style="font-style: italic" :style="{backgroundImage: underlineColor}">
-                {{enterpriseName}}</h1>
-            <hr>
+            </section>
+            <v-btn class="mx-2 contactAnim" fab dark large color="error" style="animation-delay: 0.3s"
+                   @click="sendMail">
+                <v-icon dark>mdi-email</v-icon>
+            </v-btn>
+            <v-btn v-if="admin" class="mx-2 adminAnim" fab dark large color="error" style="animation-delay: 0.3s">
+                <v-icon dark>mdi-wrench</v-icon>
+            </v-btn>
         </div>
-        <div class="container">
-            <div class="container">
-                <h2 class="text-center mobileTitle">Motivations</h2>
+        <div v-else :style="{height: window.height + 'px'}">
+
+            <div class="container" style="margin-bottom: -1.5rem">
+                <h1 class="helloMobile">Bonjour</h1>
+                <h1 class="underlineHome" style="font-style: italic" :style="{backgroundImage: underlineColor}">
+                    {{enterpriseName}}</h1>
+                <p class="subtitle-2" style="color: gray; text-align: center">  Je recherche pour l'année prochaine une alternance pour une formation de développeur mobile</p>
             </div>
             <section id="seriousMobile" class="hero is-medium is-serious" @click="motivationView('Serious')">
                 <div class="hero-body">
                 </div>
+                <div class="text-right">
+<!--                    <v-icon color="black" style="transform: rotate(-90deg)" small>mdi-arrow-down-bold-circle</v-icon>-->
+                </div>
             </section>
 
+
             <div class="container">
-                <h2 class="text-center mobileTitle">Compétences</h2>
+                <!--                <h2 class="text-center mobileTitle">Compétences</h2>-->
             </div>
 
             <section id="funMobile" class="hero is-medium is-serious" @click="motivationView('Fun')">
                 <div class="hero-body">
                 </div>
+                <div class="text-right">
+<!--                    <v-icon color="black" style="transform: rotate(-90deg);" small>mdi-arrow-down-bold-circle</v-icon>-->
+                </div>
             </section>
-        </div>
 
 
-        <div class="overflow-hidden">
-            <v-bottom-navigation
-                    :input-value="showNav"
-                    color="secondary"
-                    grow
-                    :fixed="true"
-            >
-                <v-btn style="margin-top: 0.5rem;" @click="goToLinkeidn">
-                    <v-icon>mdi-linkedin</v-icon>
-                </v-btn>
-                <v-btn style="margin-top: 0.5rem;" @click="sendMail">
-                    <v-icon>mdi-email</v-icon>
-                </v-btn>
-                <v-btn style="margin-top: 0.5rem;" @click="goToGithub">
-                    <v-icon>mdi-github-circle</v-icon>
-                </v-btn>
-            </v-bottom-navigation>
+            <div class="overflow-hidden" style="margin: 2rem; margin-bottom: 0">
+                <v-bottom-navigation
+                        :input-value="showNav"
+                        color="secondary"
+                        grow
+                        :fixed="false"
+                >
+                    <v-btn style="margin-top: 0.5rem;" @click="goToLinkeidn">
+                        <v-icon>mdi-linkedin</v-icon>
+                    </v-btn>
+                    <v-btn style="margin-top: 0.5rem;" @click="sendMail">
+                        <v-icon>mdi-email</v-icon>
+                    </v-btn>
+                    <v-btn style="margin-top: 0.5rem;" @click="goToGithub">
+                        <v-icon>mdi-github-circle</v-icon>
+                    </v-btn>
+                </v-bottom-navigation>
+            </div>
         </div>
     </div>
 
@@ -127,6 +131,7 @@
             this.randomColor = this.getRandomColor()
             window.addEventListener('resize', this.handleResize)
             this.handleResize();
+            ScreenOrientation.lock('portrait')
         },
         methods: {
             prompt() {
@@ -195,7 +200,7 @@
             goToLinkeidn() {
                 window.open(this.linkedinLink)
             },
-            goToGithub(){
+            goToGithub() {
                 window.open(this.gitHubLink)
             }
         },
@@ -204,7 +209,7 @@
                 return 'linear-gradient(\n transparent 28%, ' + this.randomColor + ' 28%, ' + this.randomColor + ' 55%, transparent 55%)'
             },
             mobileWidth() {
-                if (this.window.width < 430) {
+                if (this.window.width < 650) {
                     return true
                 } else {
                     return false
@@ -294,9 +299,15 @@
         transition-duration: 0.7s;
         box-shadow: 4px 1px 5px black;
 
-        @media screen and (max-device-width: 425px) {
+        @media screen and (max-device-width: 650px) {
             height: 9rem;
             box-shadow: none;
+            background-image: url("../assets/motivation.png");
+            filter: none;
+            background-color: white;
+            border: none;
+            animation: none;
+            margin-top: 0;
         }
 
 
@@ -329,11 +340,18 @@
             background-position: right 50% bottom 65%;
             padding-top: 2rem;
             box-shadow: 8px 5px 15px black;
+            @media screen and (max-device-width: 1000px) {
+                border-bottom: none;
+                filter: none;
+                background-position: 0;
+                padding-top: 0;
+                box-shadow: none;
+            }
         }
     }
 
     #funMobile {
-        background-image: url('../assets/serious.jpg');
+        background-image: url('../assets/competences.png');
     }
 
     #fun {
@@ -380,19 +398,6 @@
         }
     }
 
-    .minTitleFun {
-        font-size: 0.8rem;
-        font-weight: bold;
-        text-align: left;
-        margin-left: 13rem;
-
-        @media only screen and (max-device-width: 375px) {
-            margin-left: 11rem;
-        }
-        @media only screen and (max-device-width: 320px) {
-            margin-left: 9rem;
-        }
-    }
 
     .minTitleSerious {
         font-size: 0.8rem;
@@ -410,7 +415,7 @@
 
     #meet {
         font-size: 1.5rem !important;
-        @media screen and (max-device-width: 425px) {
+        @media screen and (max-device-width: 1000px) {
             font-size: 1rem !important;
         }
     }
@@ -474,7 +479,7 @@
         display: inline;
         transition-duration: 0.8s;
         padding: 1.3125rem .25rem 1.5625rem;
-        @media screen and (max-device-width: 425px) {
+        @media screen and (max-device-width: 1000px) {
             font-size: 3rem;
             background-size: 10rem 3rem;
             background-position-x: 4rem;

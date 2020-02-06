@@ -1,6 +1,6 @@
 <template>
     <v-app>
-        <transition :name="mobileWidth">
+        <transition name="router-anim">
             <router-view/>
         </transition>
     </v-app>
@@ -80,10 +80,17 @@
         animation: enter 1s;
         animation-delay: 0.6s;
         opacity: 0;
+        @media screen and (max-device-width: 1000px) {
+            animation: enterMobile 1s;
+            animation-delay: 0.6s;
+        }
     }
 
     .router-anim-leave-active {
         animation: leave 1s;
+        @media screen and (max-device-width: 1000px) {
+            animation: leaveMobile 1s;
+        }
     }
 
     .backHome:hover {
@@ -96,7 +103,7 @@
         display: inline;
         transition-duration: 0.8s;
         padding: 1.3125rem .25rem 1.5625rem;
-        @media screen and (max-device-width: 425px) {
+        @media screen and (max-device-width: 1000px) {
             font-size: 1rem;
             background-size: 5rem 3.6rem;
         }
@@ -124,6 +131,25 @@
         }
         100% {
             transform: translateX(-250px) scale(0.5);
+            opacity: 0;
+        }
+    }
+    @keyframes enterMobile {
+        from {
+            transform: scale(0);
+            opacity: 0;
+        }
+        to {
+            transform: scale(1);
+            opacity: 1;
+        }
+    }
+
+    @keyframes leaveMobile {
+        0% {
+            opacity: 1;
+        }
+        100% {
             opacity: 0;
         }
     }
