@@ -4,9 +4,11 @@
             <router-view/>
         </transition>
     </v-app>
-
 </template>
 <script>
+
+    import typelighter from './plugins/typelighter.min'
+
 
     export default {
         name: 'home',
@@ -17,11 +19,11 @@
                 height: 0
             },
         }),
-        created(){
+        created() {
             window.addEventListener('resize', this.handleResize)
             this.handleResize();
         },
-        method:{
+        method: {
             handleResize() {
                 this.window.width = window.innerWidth;
                 this.window.height = window.innerHeight;
@@ -134,6 +136,7 @@
             opacity: 0;
         }
     }
+
     @keyframes enterMobile {
         from {
             transform: scale(0);
@@ -153,6 +156,7 @@
             opacity: 0;
         }
     }
+
     .paragrafAnim {
         animation: seriousEnter 1s forwards;
         opacity: 0;

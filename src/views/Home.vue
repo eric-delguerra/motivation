@@ -1,37 +1,54 @@
 <template>
     <div>
-        <img src="../assets/jonhy.jpg" alt="" style="position: absolute; height: 95vh; filter: grayscale(1)">
-        <div style="height: 30vh">
-        </div>
-        <div v-if="!mobileWidth" class="page container" style="left: 29rem">
 
-            <h1>Eric Del Guerra</h1>
-            <hr>
-            <div class="container">
-                <p style="width: 65%; font-size: 1.1rem">
-                    Développeur junior, 26ans, Grenoble.
+        <div v-if="!mobileWidth" class="page" style="left: 29rem">
 
-                </p>
-                <p style="width: 40%; font-size: 1rem">
-                    Je suis actuellement à la recherche d'une alternance à partir de septembre 2020 pour faire une
-                    license en
-                    dévellopement mobile et interface nomade.<br> <br></p>
+            <div class="columns" style="height: 95vh">
+                <div class="column is-two-fifths">
+                    <img v-if="!mobileWidth" src="../assets/fun.jpg" alt=""
+                         style="filter: grayscale(1)">
+                </div>
+                <div class="column is-half">
+                    <div style="height: 30vh"></div>
+                    <div class="container">
+                        <vue-typer style="font-size: 5rem; margin-top: 25rem; padding-bottom: 2rem"
+                                   text='Eric Del Guerra' :repeat='0' caret-animation='smooth'
+                                   :type-delay='202'
+                                   erase-style='backspace'></vue-typer>
 
-                <p @click="motivationView('Fun')" style="cursor: pointer; width: 15%">
-                    <v-icon size="large" color="accent">mdi-book-open-page-variant</v-icon>
-                    Mes compétences <br></p>
-                <p @click="motivationView('Serious')" style="cursor: pointer; margin-top: 1rem; width: 15%">
-                    <v-icon size="large" color="accent">mdi-account-card-details</v-icon>
-                    Mes motivations
-                </p>
-                <div style="margin-top: 5rem">
-                    <p @click="sendMail" style="cursor: pointer">Contactez moi
-                        <v-icon color="accent" size="large">mdi-email</v-icon>
-                    </p>
+                        <hr>
+                        <p style="width: 65%; font-size: 1.1rem">
+                            <vue-typer
+                                       :text='["Développeur junior", "26 ans", "Grenoble"]' caret-animation='smooth'
+                                       :type-delay='150'
+                                       erase-style='backspace'></vue-typer>
+
+                        </p>
+                        <p style=" font-size: 1rem">
+                            Je suis actuellement à la recherche d'une alternance à partir de septembre 2020 pour faire
+                            une
+                            license en
+                            dévellopement mobile et interface nomade.<br> <br></p>
+
+                        <p @click="motivationView('skills')" style="cursor: pointer; width: 30%">
+                            <v-icon size="large" color="accent">mdi-book-open-page-variant</v-icon>
+                            Mes compétences <br></p>
+                        <p @click="motivationView('motivation')" style="cursor: pointer; margin-top: 1rem; width: 30%">
+                            <v-icon size="large" color="accent">mdi-account-card-details</v-icon>
+                            Mes motivations
+                        </p>
+                        <div style="margin-top: 5rem">
+                            <p @click="sendMail" style="cursor: pointer">Contactez moi
+                                <v-icon color="accent" size="large">mdi-email</v-icon>
+                            </p>
+                        </div>
+
+
+                    </div>
                 </div>
 
-
             </div>
+
 
         </div>
 
@@ -500,12 +517,10 @@
         font-family: Consolas;
 
         h1 {
-            animation: typing 4s steps(16) forwards;
-            overflow: hidden;
-            white-space: nowrap;
-            font-size: 6rem;
-            letter-spacing: -.2rem;
-            border-right: 4px solid black;
+            /*animation: typing 4s steps(16) forwards;*/
+            /*overflow: hidden;*/
+            /*white-space: nowrap;*/
+            /*border-right: 4px solid black;*/
         }
 
         p {

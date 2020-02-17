@@ -1,5 +1,5 @@
 {
-  "name": "ED",
+  "name": "ed",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -13,6 +13,7 @@
     "node-sass": "^4.13.1",
     "vue": "^2.6.10",
     "vue-router": "^3.1.3",
+    "vue-typer": "^1.2.0",
     "vuetify": "^2.1.0"
   },
   "devDependencies": {

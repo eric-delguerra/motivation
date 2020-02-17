@@ -18,12 +18,12 @@ const routes = [
         component: Home
     },
     {
-        path: '/page/Fun',
+        path: '/page/skills',
         name: 'Fun',
         component: Fun
     },
     {
-        path: '/page/Serious',
+        path: '/page/motivation',
         name: 'Serious',
         component: Serious
     },

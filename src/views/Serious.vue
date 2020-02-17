@@ -8,24 +8,27 @@
                     :style="{backgroundImage: underlineColor, color: fontColors, textShadow: fontBorder}">{{enterpriseName}}</h1></h1>
         </div>
         <template v-if="window.width > 650">
-            <v-timeline
-            :align-top="true">
+            <v-timeline  dense="dense"
+                        :align-top="true">
                 <v-timeline-item
                         v-for="(paragraf, i) in paragrafs"
                         :key="i"
                         :color="paragraf.color"
                         small
+                        right="right"
                 >
                     <template v-slot:opposite>
-                    <span
-                            :class="`headline  font-weight ${paragraf.color}--text paragrafAnim`"
-                            v-text="paragraf.paragraf"
-                            :style="{animationDelay: paragraf.delay+'s'}"/>
+<!--                    <vue-typer-->
+<!--                            :class="`headline  font-weight ${paragraf.color}&#45;&#45;text paragrafAnim`"-->
+<!--                            :text="paragraf.paragraf"-->
+<!--                            :style="{animationDelay: paragraf.delay+'s'}"-->
+<!--                            :repeat='0' caret-animation='smooth'-->
+<!--                            :type-delay='100'/>-->
                     </template>
-                    <v-card class="paragrafAnim" :style="{animationDelay: paragraf.delay+'s'}" elevation="5" >
-                        <div class="py-4 paragrafAnim" :style="{animationDelay: paragraf.delay+'s'}">
-                            <v-card-title>
-                                <h2 :class="`headline font-weight-light mb-4 ${paragraf.color}--text`">
+                    <v-card class="paragrafAnim " :style="{animationDelay: paragraf.delay+'s'}" elevation="5" >
+                        <div class="py-4 paragrafAnim " :style="{animationDelay: paragraf.delay+'s'}">
+                            <v-card-title class="has-text-centered">
+                                <h2 :class="`headline font-weight-light mb-4 ${paragraf.color}--text`" >
                                     {{paragraf.paragrafTitle}}</h2>
                             </v-card-title>
                             <v-card-text>
