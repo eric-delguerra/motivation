@@ -1,0 +1,37 @@
+<section id="serious" class="hero is-medium is-serious" @click="motivationView('Serious')">
+    <div class="hero-body">
+        <div class="container">
+            <h1 :style="{color: colorsArray[3]}" :class="[mobileWidth ? minTitleSerious : '']">
+                Mes motivations
+            </h1>
+        </div>
+    </div>
+</section>
+<section class="hero">
+    <div class="hero-body">
+        <div class="container has-text-centered">
+            <h1 class="title" id="meet">
+                <!--                        <span class="arrow">↑</span>   -->
+                Bienvenue <h1 class="underline" :style="{backgroundImage: underlineColor}">
+                {{enterpriseName}}</h1> !
+                <!--                        <span class="arrow">↓</span>-->
+            </h1>
+        </div>
+    </div>
+</section>
+<section id="fun" class="hero is-medium is-fun" @click="motivationView('Fun')">
+    <div class="hero-body">
+        <div class="container has-text-right">
+            <h1 :style="{color: colorsArray[3]}" :class="[mobileWidth ? minTitleFun : '']">
+                Mes compétences
+            </h1>
+        </div>
+    </div>
+</section>
+<v-btn class="mx-2 contactAnim" fab dark large color="error" style="animation-delay: 0.3s"
+       @click="sendMail">
+    <v-icon dark>mdi-email</v-icon>
+</v-btn>
+<v-btn v-if="admin" class="mx-2 adminAnim" fab dark large color="error" style="animation-delay: 0.3s">
+    <v-icon dark>mdi-wrench</v-icon>
+</v-btn>

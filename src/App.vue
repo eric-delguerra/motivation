@@ -1,6 +1,6 @@
 <template>
     <v-app>
-        <transition name="router-anim">
+        <transition name="fade">
             <router-view/>
         </transition>
     </v-app>
@@ -77,7 +77,7 @@
     }
 
     .router-anim-enter-active {
-        animation: enter 1s;
+        animation: enterMobile 1s;
         animation-delay: 0.6s;
         opacity: 0;
         @media screen and (max-device-width: 1000px) {
@@ -87,7 +87,7 @@
     }
 
     .router-anim-leave-active {
-        animation: leave 1s;
+        animation: leaveMobile 1s;
         @media screen and (max-device-width: 1000px) {
             animation: leaveMobile 1s;
         }

@@ -1,57 +1,54 @@
 <template>
     <div>
-        <div v-if="!mobileWidth" class="page" style="margin-top: 2rem">
-            <section id="serious" class="hero is-medium is-serious" @click="motivationView('Serious')">
-                <div class="hero-body">
-                    <div class="container">
-                        <h1 :style="{color: colorsArray[3]}" :class="[mobileWidth ? minTitleSerious : '']">
-                            De la rigueur ?
-                        </h1>
-                    </div>
-                </div>
-            </section>
-            <section class="hero">
-                <div class="hero-body">
-                    <div class="container has-text-centered">
-                        <h1 class="title" id="meet">
-                            <!--                        <span class="arrow">↑</span>   -->
-                            Que recherchez-vous <h1 class="underline" :style="{backgroundImage: underlineColor}">
-                            {{enterpriseName}}</h1> ?
-                            <!--                        <span class="arrow">↓</span>-->
-                        </h1>
-                    </div>
-                </div>
-            </section>
-            <section id="fun" class="hero is-medium is-fun" @click="motivationView('Fun')">
-                <div class="hero-body">
-                    <div class="container has-text-right">
-                        <h1 :style="{color: colorsArray[3]}" :class="[mobileWidth ? minTitleFun : '']">
-                            De la créativité ?
-                        </h1>
-                    </div>
-                </div>
-            </section>
-            <v-btn class="mx-2 contactAnim" fab dark large color="error" style="animation-delay: 0.3s"
-                   @click="sendMail">
-                <v-icon dark>mdi-email</v-icon>
-            </v-btn>
-            <v-btn v-if="admin" class="mx-2 adminAnim" fab dark large color="error" style="animation-delay: 0.3s">
-                <v-icon dark>mdi-wrench</v-icon>
-            </v-btn>
+        <img src="../assets/jonhy.jpg" alt="" style="position: absolute; height: 95vh; filter: grayscale(1)">
+        <div style="height: 30vh">
         </div>
+        <div v-if="!mobileWidth" class="page container" style="left: 29rem">
+
+            <h1>Eric Del Guerra</h1>
+            <hr>
+            <div class="container">
+                <p style="width: 65%; font-size: 1.1rem">
+                    Développeur junior, 26ans, Grenoble.
+
+                </p>
+                <p style="width: 40%; font-size: 1rem">
+                    Je suis actuellement à la recherche d'une alternance à partir de septembre 2020 pour faire une
+                    license en
+                    dévellopement mobile et interface nomade.<br> <br></p>
+
+                <p @click="motivationView('Fun')" style="cursor: pointer; width: 15%">
+                    <v-icon size="large" color="accent">mdi-book-open-page-variant</v-icon>
+                    Mes compétences <br></p>
+                <p @click="motivationView('Serious')" style="cursor: pointer; margin-top: 1rem; width: 15%">
+                    <v-icon size="large" color="accent">mdi-account-card-details</v-icon>
+                    Mes motivations
+                </p>
+                <div style="margin-top: 5rem">
+                    <p @click="sendMail" style="cursor: pointer">Contactez moi
+                        <v-icon color="accent" size="large">mdi-email</v-icon>
+                    </p>
+                </div>
+
+
+            </div>
+
+        </div>
+
         <div v-else :style="{height: window.height + 'px'}">
 
             <div class="container" style="margin-bottom: -1.5rem">
                 <h1 class="helloMobile">Bonjour</h1>
                 <h1 class="underlineHome" style="font-style: italic" :style="{backgroundImage: underlineColor}">
                     {{enterpriseName}}</h1>
-                <p class="subtitle-2" style="color: gray; text-align: center">  Je recherche pour l'année prochaine une alternance pour une formation de développeur mobile</p>
+                <p class="subtitle-2" style="color: gray; text-align: center"> Je recherche pour l'année prochaine une
+                    alternance pour une formation de développeur mobile</p>
             </div>
             <section id="seriousMobile" class="hero is-medium is-serious" @click="motivationView('Serious')">
                 <div class="hero-body">
                 </div>
                 <div class="text-right">
-<!--                    <v-icon color="black" style="transform: rotate(-90deg)" small>mdi-arrow-down-bold-circle</v-icon>-->
+                    <!--                    <v-icon color="black" style="transform: rotate(-90deg)" small>mdi-arrow-down-bold-circle</v-icon>-->
                 </div>
             </section>
 
@@ -64,7 +61,7 @@
                 <div class="hero-body">
                 </div>
                 <div class="text-right">
-<!--                    <v-icon color="black" style="transform: rotate(-90deg);" small>mdi-arrow-down-bold-circle</v-icon>-->
+                    <!--                    <v-icon color="black" style="transform: rotate(-90deg);" small>mdi-arrow-down-bold-circle</v-icon>-->
                 </div>
             </section>
 
@@ -88,6 +85,9 @@
                 </v-bottom-navigation>
             </div>
         </div>
+        <v-footer v-if="!mobileWidth" absolute color="accent" class="font-weight-medium">
+            <v-col cols="12" class="text-center" style="color: white">2020 - Eric Del Guerra</v-col>
+        </v-footer>
     </div>
 
 </template>
@@ -131,7 +131,6 @@
             this.randomColor = this.getRandomColor()
             window.addEventListener('resize', this.handleResize)
             this.handleResize();
-            ScreenOrientation.lock('portrait')
         },
         methods: {
             prompt() {
@@ -202,7 +201,10 @@
             },
             goToGithub() {
                 window.open(this.gitHubLink)
-            }
+            },
+            sendMail() {
+                window.open(this.email)
+            },
         },
         computed: {
             underlineColor() {
@@ -492,6 +494,41 @@
 
     .mobileTitle {
         font-weight: bold;
+    }
+
+    div.container {
+        font-family: Consolas;
+
+        h1 {
+            animation: typing 4s steps(16) forwards;
+            overflow: hidden;
+            white-space: nowrap;
+            font-size: 6rem;
+            letter-spacing: -.2rem;
+            border-right: 4px solid black;
+        }
+
+        p {
+            line-height: 1.2rem;
+        }
+    }
+
+    @keyframes typing {
+        from {
+            width: 0ch;
+        }
+        to {
+            width: 15ch;
+        }
+    }
+
+    @keyframes borderClip {
+        from {
+            border-right: 4px black;
+        }
+        to {
+            border-right: 4px solid black;
+        }
     }
 
 </style>
