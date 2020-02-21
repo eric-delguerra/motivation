@@ -1,9 +1,9 @@
 <template>
     <div class="container background page">
-        <v-btn class="ma-2 backHome" color="error" elevation="3" :to="{path: '/'}">
+        <v-btn class="ma-2 backHome" color="accent" elevation="3" :to="{path: '/'}" fixed>
             <v-icon>mdi-home</v-icon>
         </v-btn>
-        <div class="is-mobile is-top" style="margin-left: 1rem">
+        <div class="is-mobile is-top" style="margin-left: 1rem; margin-top: 3rem">
             <h1 class="is-size-2 font-weight-bold font-italic column is-offset-5 titre"
                 :style="{color: fontColors, textShadow: fontBorder}">Re-bonjour <h1
                     class="underline is-size-2 font-weight-bold font-italic"

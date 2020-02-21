@@ -1,45 +1,34 @@
-<template >
+<template>
     <div class="container background page">
-        <v-btn class="ma-2 backHome" color="error" elevation="3" :to="{path: '/'}"><v-icon>mdi-home</v-icon></v-btn>
-        <div class="is-mobile is-top-right">
-            <h1 class="is-size-2 font-weight-bold font-italic column is-offset-7 titre"
+        <v-btn class="ma-2 backHome" color="accent" elevation="3" style="z-index: 20!important; left: 2rem"
+               :to="{path: '/'}" fixed>
+            <v-icon>mdi-home</v-icon>
+        </v-btn>
+        <div class="is-mobile is-top-right" style="margin-top: 3rem">
+            <h1 class="is-size-2 font-weight-bold font-italic column  titre"
                 :style="{color: fontColors, textShadow: fontBorder}">Re-bonjour <h1
                     class="underline is-size-2 font-weight-bold font-italic"
-                    :style="{backgroundImage: underlineColor, color: fontColors, textShadow: fontBorder}">{{enterpriseName}}</h1></h1>
+                    :style="{backgroundImage: underlineColor, color: fontColors, textShadow: fontBorder}">
+                {{enterpriseName}}</h1></h1>
         </div>
-        <template v-if="window.width > 650">
-            <v-timeline  dense="dense"
-                        :align-top="true">
-                <v-timeline-item
-                        v-for="(paragraf, i) in paragrafs"
-                        :key="i"
-                        :color="paragraf.color"
-                        small
-                        right="right"
-                >
-                    <template v-slot:opposite>
-<!--                    <vue-typer-->
-<!--                            :class="`headline  font-weight ${paragraf.color}&#45;&#45;text paragrafAnim`"-->
-<!--                            :text="paragraf.paragraf"-->
-<!--                            :style="{animationDelay: paragraf.delay+'s'}"-->
-<!--                            :repeat='0' caret-animation='smooth'-->
-<!--                            :type-delay='100'/>-->
-                    </template>
-                    <v-card class="paragrafAnim " :style="{animationDelay: paragraf.delay+'s'}" elevation="5" >
-                        <div class="py-4 paragrafAnim " :style="{animationDelay: paragraf.delay+'s'}">
-                            <v-card-title class="has-text-centered">
-                                <h2 :class="`headline font-weight-light mb-4 ${paragraf.color}--text`" >
-                                    {{paragraf.paragrafTitle}}</h2>
-                            </v-card-title>
-                            <v-card-text>
-                                <div :class="`text-${paragraf.align} is-size-6`">
-                                    {{paragraf.paragrafContent}}
-                                </div>
-                            </v-card-text>
-                        </div>
-                    </v-card>
-                </v-timeline-item>
-            </v-timeline>
+        <template v-if="window.width > 800">
+            <v-container>
+                <div class="container columns" style="width: 80vw">
+                    <div class="column is-2 menuSerious" style="transition-duration: 0.5s" :class="paragraf.active === 1 ? 'selectedMenu' : null"
+                         v-for="(paragraf, i)  in paragrafs"
+                         @click="[whichInfo = i, menu(i)]">
+                        <p>{{paragraf.paragrafTitle}}</p>
+                    </div>
+                </div>
+                <div id="content" class="container" style="margin: 15vh">
+                    <div v-for="(paragraf, i) in paragrafs" v-if="whichInfo === i" style="height: 10vh">
+                        <p>
+                            {{paragraf.paragrafContent}}
+                        </p>
+                    </div>
+                </div>
+            </v-container>
+
         </template>
         <template v-else>
             <v-card
@@ -84,12 +73,12 @@
                 </v-card-text>
             </v-card>
         </template>
-        <div v-intersect.quiet="onIntersect" class="text-center" style="padding: 3rem;">
-            <v-btn v-if="contact" class="mx-2 paragrafAnim" fab dark large color="secondary" style="animation-delay: 0.3s" @click="sendMail" >
-                <v-icon dark>mdi-email</v-icon>
-            </v-btn>
+        <div class="text-center" style="padding: 3rem; cursor: pointer" @click="sendMail" >
+            <v-icon class="mx-2 paragrafAnim" fab dark large color="secondary"
+                    style="animation-delay: 0.3s;">mdi-email
+            </v-icon>
             <br>
-            <p v-if="contact" class="secondary--text" style="padding-top: 1rem">Contactez-moi</p>
+            <p class="secondary--text" style="padding-top: 1rem">Contactez-moi</p>
         </div>
     </div>
 </template>
@@ -100,6 +89,7 @@
         data() {
             return {
                 randomColor: '',
+                whichInfo: 0,
                 enterpriseName: '',
                 paragrafs: [
                     {
@@ -108,25 +98,30 @@
                         align: 'center',
                         paragraf: '" Je recherche une alternance "',
                         paragrafTitle: 'Présentation',
-                        paragrafContent: 'Je m\'appelle Eric, je vis sur Grenoble et je recherche une entreprise pour une future alternance en Service Mobiles et Interface Nomade\n'
+                        paragrafContent: 'Je m\'appelle Eric, je vis sur Grenoble et je recherche une entreprise pour une future alternance en Service Mobiles et Interface Nomade.',
+                        col: 5,
+                        active: 1
                     },
                     {
                         color: 'accent',
                         delay: 4,
                         align: 'center',
                         paragraf: '" Je suis actuellement en formation "',
-                        paragrafTitle: 'Qu\'est ce que je fais aujourd\'hui',
-                        paragrafContent: 'Je suis actuellement en formation au Campus Numérique in The Alps, j\'ai commencé cette formation en fin d\'année 2018 et je suis en ce moment et jusqu\'à ' +
-                            'ma soutenance en alternance chez BSM / IZYFLOW à Montbonnot\n'
+                        paragrafTitle: 'Aujourd\'hui',
+                        paragrafContent: 'Je suis actuellement en formation au Campus Numérique in The Alps, j\'ai commencé cette formation en fin d\'année 2018 et je suis en ce moment et jusqu\'à ma soutenance en alternance chez BSM / IZYFLOW à Montbonnot.',
+                        col: 7,
+                        active: 0
+
                     },
                     {
                         color: 'info',
                         delay: 8,
                         align: 'center',
                         paragraf: '" Une montée en compétences "',
-                        paragrafTitle: 'Qu\'est ce que je veux faire',
-                        paragrafContent: 'Aujourd\'hui j\'aimerai continué de me former au métier du Web et me spécialiser en intégration mobile. Une année suplémentaire me permettrai une montée en ' +
-                            'compétences et une réelle validation de celles-ci.\nA l\'avenir j\'aimerai confier de mon temps et transmettre ce que j\'ai appris à de nouvelles personnes.\n'
+                        paragrafTitle: 'Je souhaite',
+                        paragrafContent: 'Aujourd\'hui j\'aimerai continué de me former au métier du Web et me spécialiser en intégration mobile.Une année suplémentaire me permettrai une montée en compétences et une réelle validation de celles-ci. A l\'avenir j\'aimerai confier de mon temps et transmettre ce que j\'ai appris à de nouvelles personnes.',
+                        col: 5,
+                        active: 0
                     },
                     {
                         color: 'accent',
@@ -134,25 +129,27 @@
                         align: 'center',
                         paragraf: '" Ma curiosité m\'a permis également d\'en apprendre plus "',
                         paragrafTitle: 'Mes compétences',
-                        paragrafContent: 'Je suis plutôt à l\'aise en Back-End, j\'aimerais acquérir de fortes compétences en intégration par la suite. Je suis à l\'aise en Javascript ainsi que VueJS. ' +
-                            'Pendant mon alternance je travail sur une application en PHP Slim. Ma formation m\'a également permise d\'apprehender d\'autres langages comme le C# et JAVA.\n' +
-                            ' Ma curiosité m\'a permis également d\'en apprendre plus en C# avec le logiciel Unity. La mise en place de test (unitaire et fonctionnel) est également dans mon cursus mais nous n\'avons pas eu des gros module dessus. \n'
+                        paragrafContent: 'Je suis plutôt à l\'aise en Back-End, j\'aimerais acquérir de fortes compétences en intégration par la suite. Je suis à l\'aise en Javascript ainsi que VueJS. Pendant mon alternance je travail sur une application en PHP Slim. Ma formation m\'a également permise d\'apprehender d\'autres langages comme le C# et JAVA. Ma curiosité m\'a permis également d\'en apprendre plus en C# avec le logiciel Unity. La mise en place de test (unitaire et fonctionnel) est également dans mon cursus mais nous n\'avons pas eu des gros module dessus.',
+                        col: 7,
+                        active: 0
                     },
+
                     {
                         color: 'secondary',
                         delay: 18,
                         align: 'center',
                         paragraf: 'Je suis très assidu dans ce que je fais',
                         paragrafTitle: 'Pourquoi moi ?',
-                        paragrafContent: 'Je suis une personne très curieuse et très sociable. J\'aime travailler en groupe, je suis très assidu dans ce que je fais. Avec un certain recul je ' +
-                            'pense être force de proposition quand une idée me semble pertinante. \n Je reconnais facilement mes forces et mes faiblesses, ce qui me permet d\'apprendre vite et de me mettre au travail efficassement'
+                        paragrafContent: 'Je suis une personne très curieuse et très sociable. J\'aime travailler en groupe, je suis très assidu dans ce que je fais. Avec un certain recul je pense être force de proposition quand une idée me semble pertinante. Je reconnais facilement mes forces et mes faiblesses, ce qui me permet d\'apprendre vite et de me mettre au travail efficassement.',
+                        col: 5,
+                        active: 0
                     },
                 ],
                 colorsArray: [
                     '#05F2DB',
-                    '#0388A6',
+                    // '#0388A6',
                     '#F205CB',
-                    '#A61780'
+                    // '#A61780'
                 ],
                 fontColors: 'black',
                 fontBorder: '',
@@ -166,14 +163,14 @@
         created() {
             this.enterpriseName = localStorage.getItem("name")
             this.randomColor = this.getRandomColor()
-            if (this.randomColor === '#0388A6' || this.randomColor === '#A61780'){
+            if (this.randomColor === '#0388A6' || this.randomColor === '#A61780') {
                 this.fontColors = 'white'
                 this.fontBorder = '-1px 0 black, 0 1px black, 1px 0 black, 0 -1px black'
             }
             window.addEventListener('resize', this.handleResize)
             this.handleResize();
-            if (parseInt(localStorage.getItem("firstPassage")) > 3){
-                for (let i = 0; i < this.paragrafs.length; i++){
+            if (parseInt(localStorage.getItem("firstPassage")) > 3) {
+                for (let i = 0; i < this.paragrafs.length; i++) {
                     this.paragrafs[i].delay = i;
                 }
             }
@@ -185,17 +182,27 @@
             handleResize() {
                 this.window.width = window.innerWidth;
             },
-            onIntersect (entries, observer, isIntersecting) {
+            onIntersect(entries, observer, isIntersecting) {
                 this.contact = true
             },
             sendMail() {
                 window.open(this.email)
             },
+            menu(value) {
+                for (let i = 0; i < this.paragrafs.length; i++) {
+                    if (i === value) {
+                        this.paragrafs[i].active = 1
+                    } else {
+                        this.paragrafs[i].active = 0
+                    }
+                }
+            }
         },
         computed: {
             underlineColor() {
                 return 'linear-gradient(\n transparent 28%, ' + this.randomColor + ' 28%, ' + this.randomColor + ' 55%, transparent 55%)'
-            }
+            },
+
         },
         destroyed() {
             window.removeEventListener('resize', this.handleResize)
@@ -205,8 +212,51 @@
 
 <style lang="scss" scoped>
 
+    * {
+        font-family: Consolas;
+    }
+
     .titre {
         padding-bottom: 2rem;
     }
+
+    .selectedMenu {
+        transition-duration: .4s;
+        border-bottom: solid .45rem #F205CB;
+        padding-top: 1.3rem !important;
+        /*border-width: .3rem;*/
+        /*border-style: solid;*/
+        /*border-image: linear-gradient(*/
+        /*                to bottom,*/
+        /*                #023859,*/
+        /*                rgba(0, 0, 0, 0)*/
+        /*) 1 100%;*/
+
+
+    }
+
+    .menuSerious {
+        margin: auto;
+        font-size: 1.4rem;
+        padding-top: 1rem;
+        height: 10vh;
+        text-align: center;
+
+        &:hover {
+            cursor: pointer;
+        }
+    }
+
+    #content {
+        p {
+            font-size: 1.2rem;
+            text-align: justify;
+            animation: ease-in-out .5s;
+            border-bottom: solid .2rem #0388A6;
+            padding-bottom: 2rem;
+
+        }
+    }
+
 
 </style>

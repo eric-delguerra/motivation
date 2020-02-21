@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Fun from "@/views/Fun";
 import Serious from "@/views/Serious";
+import Metting from "../views/Metting";
 
 Vue.use(VueRouter);
 
@@ -25,7 +26,7 @@ const routes = [
     {
         path: '/page/motivation',
         name: 'Serious',
-        component: Serious
+        component: Serious,
     },
     {
         path: '*',

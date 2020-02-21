@@ -3,53 +3,51 @@
 
         <div v-if="!mobileWidth" class="page" style="left: 29rem">
 
-            <div class="columns" style="height: 95vh">
+            <div class="columns" style="height: 90vh">
                 <div class="column is-two-fifths">
                     <img v-if="!mobileWidth" src="../assets/fun.jpg" alt=""
-                         style="filter: grayscale(1)">
+                         style="filter: grayscale(1); height: 95vh">
                 </div>
                 <div class="column is-half">
                     <div style="height: 30vh"></div>
                     <div class="container">
                         <vue-typer style="font-size: 5rem; margin-top: 25rem; padding-bottom: 2rem"
-                                   text='Eric Del Guerra' :repeat='0' caret-animation='smooth'
+                                   text='Eric Del Guerra ' :repeat='0' caret-animation='smooth'
                                    :type-delay='202'
                                    erase-style='backspace'></vue-typer>
 
                         <hr>
-                        <p style="width: 65%; font-size: 1.1rem">
+                        <p style="width: 65%; font-size: 1.3rem">
                             <vue-typer
                                        :text='["Développeur junior", "26 ans", "Grenoble"]' caret-animation='smooth'
                                        :type-delay='150'
                                        erase-style='backspace'></vue-typer>
 
                         </p>
-                        <p style=" font-size: 1rem">
+                        <p style="font-size: 1.1rem">
                             Je suis actuellement à la recherche d'une alternance à partir de septembre 2020 pour faire
                             une
                             license en
                             dévellopement mobile et interface nomade.<br> <br></p>
 
-                        <p @click="motivationView('skills')" style="cursor: pointer; width: 30%">
-                            <v-icon size="large" color="accent">mdi-book-open-page-variant</v-icon>
+                        <p @click="motivationView('skills')" style="cursor: pointer; width: 30%; font-size: 1.1rem">
+                            <v-icon size="x-large" color="accent">mdi-book-open-page-variant</v-icon>
                             Mes compétences <br></p>
-                        <p @click="motivationView('motivation')" style="cursor: pointer; margin-top: 1rem; width: 30%">
-                            <v-icon size="large" color="accent">mdi-account-card-details</v-icon>
+                        <p @click="motivationView('motivation')" style="cursor: pointer; margin-top: 1rem; width: 30%; font-size: 1.1rem">
+                            <v-icon size="x-large" color="accent">mdi-account-card-details</v-icon>
                             Mes motivations
                         </p>
                         <div style="margin-top: 5rem">
                             <p @click="sendMail" style="cursor: pointer">Contactez moi
                                 <v-icon color="accent" size="large">mdi-email</v-icon>
                             </p>
+                            <p @click="goToGithub" style="cursor: pointer">Mon Github
+                                <v-icon color="accent" size="large">mdi-github-circle</v-icon>
+                            </p>
                         </div>
-
-
                     </div>
                 </div>
-
             </div>
-
-
         </div>
 
         <div v-else :style="{height: window.height + 'px'}">
@@ -61,7 +59,7 @@
                 <p class="subtitle-2" style="color: gray; text-align: center"> Je recherche pour l'année prochaine une
                     alternance pour une formation de développeur mobile</p>
             </div>
-            <section id="seriousMobile" class="hero is-medium is-serious" @click="motivationView('Serious')">
+            <section id="seriousMobile" class="hero is-medium is-serious" @click="motivationView('motivation')">
                 <div class="hero-body">
                 </div>
                 <div class="text-right">
@@ -74,7 +72,7 @@
                 <!--                <h2 class="text-center mobileTitle">Compétences</h2>-->
             </div>
 
-            <section id="funMobile" class="hero is-medium is-serious" @click="motivationView('Fun')">
+            <section id="funMobile" class="hero is-medium is-serious" @click="motivationView('skills')">
                 <div class="hero-body">
                 </div>
                 <div class="text-right">
@@ -102,7 +100,7 @@
                 </v-bottom-navigation>
             </div>
         </div>
-        <v-footer v-if="!mobileWidth" absolute color="accent" class="font-weight-medium">
+        <v-footer v-if="!mobileWidth" fixed color="accent" class="font-weight-medium">
             <v-col cols="12" class="text-center" style="color: white">2020 - Eric Del Guerra</v-col>
         </v-footer>
     </div>
@@ -158,10 +156,11 @@
                         maxlength: 15,
                         minlength: 3,
                         canCancel: [false, false, false],
+                        color: "#0388A6"
                     },
                     confirmText: 'Valider',
                     trapFocus: true,
-                    type: 'is-serious',
+                    type: 'is-darkBlue',
                     onConfirm: (value) => this.fixData(value)
                 })
             },
@@ -182,7 +181,6 @@
                         localStorage.setItem("firstPassage", "1")
                     } else {
                         let nbr = parseInt(localStorage.getItem("firstPassage"))
-                        console.log(typeof nbr)
                         localStorage.setItem("firstPassage", (nbr + 1).toString())
                     }
                     localStorage.setItem("name", value)
@@ -544,6 +542,10 @@
         to {
             border-right: 4px solid black;
         }
+    }
+
+    button {
+        font-family: Consolas;
     }
 
 </style>

@@ -35,3 +35,32 @@
 <v-btn v-if="admin" class="mx-2 adminAnim" fab dark large color="error" style="animation-delay: 0.3s">
     <v-icon dark>mdi-wrench</v-icon>
 </v-btn>
+
+
+
+<!--            <v-timeline  dense="dense"-->
+<!--                        :align-top="true">-->
+<!--                <v-timeline-item-->
+<!--                        v-for="(paragraf, i) in paragrafs"-->
+<!--                        :key="i"-->
+<!--                        :color="paragraf.color"-->
+<!--                        small-->
+<!--                        right="right"-->
+<!--                >-->
+<!--                    <template v-slot:opposite>-->
+<!--                    </template>-->
+<!--                    <v-card class="paragrafAnim " :style="{animationDelay: paragraf.delay+'s'}" elevation="5" >-->
+<!--                        <div class="py-4 paragrafAnim " :style="{animationDelay: paragraf.delay+'s'}">-->
+<!--                            <v-card-title class="has-text-centered">-->
+<!--                                <h2 :class="`headline font-weight-light mb-4 ${paragraf.color}&#45;&#45;text`" >-->
+<!--                                    {{paragraf.paragrafTitle}}</h2>-->
+<!--                            </v-card-title>-->
+<!--                            <v-card-text>-->
+<!--                                <div :class="`text-${paragraf.align} is-size-6`">-->
+<!--                                    {{paragraf.paragrafContent}}-->
+<!--                                </div>-->
+<!--                            </v-card-text>-->
+<!--                        </div>-->
+<!--                    </v-card>-->
+<!--                </v-timeline-item>-->
+<!--            </v-timeline>-->

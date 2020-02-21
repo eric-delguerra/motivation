@@ -63,7 +63,8 @@
             "danger": ($danger, $danger-invert),
             "twitter": ($twitter, $twitter-invert),
             "cyan": ($cyan, $cyan-invert),
-            "serious": (#05F2DB, $black)
+            "serious": (#05F2DB, $black),
+            "darkBlue": (#0388A6, $black)
     );
     // Links
     $link: $primary;
