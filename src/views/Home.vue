@@ -140,8 +140,6 @@
                 this.fixData(this.$route.params.name)
             } else if (localStorage.getItem("name")) {
                 this.fixData(this.capitalizeFirstLetter(localStorage.getItem("name")))
-            } else {
-                this.prompt()
             }
             this.randomColor = this.getRandomColor()
             window.addEventListener('resize', this.handleResize)
@@ -192,11 +190,11 @@
             },
             fireCall(value) {
                 let db = firebase.firestore()
-                // db.collection("analytics").add({
-                //     name: this.enterpriseName,
-                //     style: value,
-                //     created_at: new Date()
-                // })
+                db.collection("analytics").add({
+                    name: this.enterpriseName,
+                    style: value,
+                    created_at: new Date()
+                })
             },
             getRandomColor() {
                 return this.colorsArray[Math.floor(Math.random() * this.colorsArray.length)];

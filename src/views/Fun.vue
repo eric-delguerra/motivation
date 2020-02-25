@@ -5,10 +5,10 @@
         </v-btn>
         <div class="is-mobile is-top" style="margin-left: 1rem; margin-top: 3rem">
             <h1 class="is-size-2 font-weight-bold font-italic column is-offset-5 titre"
-                :style="{color: fontColors, textShadow: fontBorder}">Re-bonjour <h1
+                :style="{color: fontColors, textShadow: fontBorder}">Hey <h1
                     class="underline is-size-2 font-weight-bold font-italic"
                     :style="{backgroundImage: underlineColor, color: fontColors, textShadow: fontBorder}">
-                {{enterpriseName}}</h1></h1>
+                {{enterpriseName}}</h1> !</h1>
         </div>
         <template v-if="window.width > 650">
             <v-card-text class="py-0">
@@ -416,7 +416,7 @@
                     },
                     {
                         color: 'accent',
-                        delay: 2,
+                        delay: 1,
                         paragraf: '',
                         paragrafTitle: 'Formation',
                         paragrafContent: '',
