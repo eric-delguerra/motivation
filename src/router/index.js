@@ -13,10 +13,20 @@ const routes = [
         name: 'home',
         component: Home
     },
+    // {
+    //     path: '/:name',
+    //     name: 'home',
+    //     component: Home
+    // },
     {
-        path: '/:name',
-        name: 'home',
-        component: Home
+        path: '/:name', redirect: Home => {
+            let url = new URL(window.location.href);
+            let parsedUrl = (url.pathname).substring(1).replace(/%20/g," ")
+            // console.log(parsedUrl)
+            // console.log(window.location.href)
+            localStorage.setItem('name', parsedUrl)
+            return '/'
+        }
     },
     {
         path: '/page/skills',

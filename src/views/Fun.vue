@@ -1,6 +1,6 @@
 <template>
     <div class="container background page">
-        <v-btn class="ma-2 backHome" color="accent" elevation="3" :to="{path: '/'}" fixed>
+        <v-btn class="ma-2 backHome" color="accent" elevation="3" :to="{path: '/'}" fixed style="z-index: 5">
             <v-icon>mdi-home</v-icon>
         </v-btn>
         <div class="is-mobile is-top" style="margin-left: 1rem; margin-top: 3rem">
@@ -511,6 +511,10 @@
 </script>
 
 <style lang="scss" scoped>
+
+    * {
+        font-family: Consolas;
+    }
 
     .titre {
         padding-bottom: 2rem;
