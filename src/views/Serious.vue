@@ -14,7 +14,8 @@
         <template v-if="window.width > 800">
             <v-container>
                 <div class="container columns" style="width: 80vw">
-                    <div class="column is-2 menuSerious" style="transition-duration: 0.5s" :class="paragraf.active === 1 ? 'selectedMenu' : null"
+                    <div class="column is-2 menuSerious" style="transition-duration: 0.5s"
+                         :class="paragraf.active === 1 ? 'selectedMenu' : null"
                          v-for="(paragraf, i)  in paragrafs"
                          @click="[whichInfo = i, menu(i)]">
                         <p>{{paragraf.paragrafTitle}}</p>
@@ -25,6 +26,11 @@
                         <p>
                             {{paragraf.paragrafContent}}
                         </p>
+                        <v-icon
+                                class="next"
+                                color="error"
+                                @click="nextParagraf()"
+                        v-if="whichInfo < 4">mdi-arrow-down-bold</v-icon>
                     </div>
                 </div>
             </v-container>
@@ -73,7 +79,7 @@
                 </v-card-text>
             </v-card>
         </template>
-        <div class="text-center" style="padding: 3rem; cursor: pointer" @click="sendMail" >
+        <div class="text-center" style="padding: 3rem; cursor: pointer" @click="sendMail">
             <v-icon class="mx-2 paragrafAnim" fab dark large color="secondary"
                     style="animation-delay: 0.3s;">mdi-email
             </v-icon>
@@ -196,6 +202,12 @@
                         this.paragrafs[i].active = 0
                     }
                 }
+            },
+            nextParagraf() {
+                if (this.whichInfo < 5) {
+                    this.whichInfo += 1
+                    this.menu(this.whichInfo)
+                }
             }
         },
         computed: {
@@ -254,6 +266,18 @@
             animation: ease-in-out .5s;
             border-bottom: solid .2rem #0388A6;
             padding-bottom: 2rem;
+
+        }
+    }
+
+    .next {
+        margin-left: 95%;
+        transform: rotate(-90deg) scale(1.2);
+        cursor: pointer;
+        animation-duration: .5s;
+
+        &:hover {
+            transform:rotate(-90deg) scale(1.5);
 
         }
     }
