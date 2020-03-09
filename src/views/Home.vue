@@ -19,9 +19,9 @@
                         <hr>
                         <p style="width: 65%; font-size: 1.3rem">
                             <vue-typer
-                                       :text='["Développeur junior", "26 ans", "Grenoble"]' caret-animation='smooth'
-                                       :type-delay='150'
-                                       erase-style='backspace'></vue-typer>
+                                    :text='["Développeur junior", "26 ans", "Grenoble"]' caret-animation='smooth'
+                                    :type-delay='150'
+                                    erase-style='backspace'></vue-typer>
 
                         </p>
                         <p style="font-size: 1.1rem">
@@ -33,7 +33,8 @@
                         <p @click="motivationView('skills')" style="cursor: pointer; width: 30%; font-size: 1.1rem">
                             <v-icon size="x-large" color="accent">mdi-book-open-page-variant</v-icon>
                             Mes compétences <br></p>
-                        <p @click="motivationView('motivation')" style="cursor: pointer; margin-top: 1rem; width: 30%; font-size: 1.1rem">
+                        <p @click="motivationView('motivation')"
+                           style="cursor: pointer; margin-top: 1rem; width: 30%; font-size: 1.1rem">
                             <v-icon size="x-large" color="accent">mdi-account-card-details</v-icon>
                             Mes motivations
                         </p>
@@ -50,52 +51,75 @@
             </div>
         </div>
 
-        <div v-else :style="{height: window.height + 'px'}">
+        <div v-else :style="{height: window.height + 'px'}" style="" class="mobileBackground">
 
-            <div class="container" style="margin-bottom: -1.5rem">
-                <h1 class="helloMobile">Bonjour</h1>
-                <h1 class="underlineHome" style="font-style: italic" :style="{backgroundImage: underlineColor}">
-                    {{enterpriseName}}</h1>
-                <p class="subtitle-2" style="color: gray; text-align: center"> Je recherche pour l'année prochaine une
-                    alternance pour une formation de développeur mobile</p>
+            <!--            <div class="container" style="">-->
+            <!--&lt;!&ndash;                <h1 class="helloMobile">Bonjour</h1>&ndash;&gt;-->
+            <!--&lt;!&ndash;                <h1 class="underlineHome" style="font-style: italic; font-size: 3rem" :style="{backgroundImage: underlineColor}">&ndash;&gt;-->
+            <!--&lt;!&ndash;                    {{enterpriseName}}</h1>&ndash;&gt;-->
+
+            <!--                <p style="color: gray; text-align: center; font-size: 1.5rem; letter-spacing: normal"> Je recherche pour l'année prochaine une-->
+            <!--                    alternance pour une formation de développeur mobile</p>-->
+            <!--            </div>-->
+            <!--            <section id="seriousMobile" class="hero is-medium is-serious" @click="motivationView('motivation')">-->
+            <!--                <div class="container">-->
+            <!--                    <p class="skill">Motivation</p>-->
+            <!--                </div>-->
+            <!--            </section>-->
+
+
+            <!--            <div class="container">-->
+            <!--                &lt;!&ndash;                <h2 class="text-center mobileTitle">Compétences</h2>&ndash;&gt;-->
+            <!--            </div>-->
+
+            <!--            <section id="funMobile" class="hero is-medium is-serious" @click="motivationView('skills')">-->
+            <!--                <div class="container">-->
+            <!--                    <p class="skill">Compétence</p>-->
+            <!--                </div>-->
+            <!--            </section>-->
+            <div class="container" style="top: 10vh">
+                <div class="column">
+                    <p style=" text-align: center; font-size: 2rem;margin-bottom: 1rem;"><span style="color: #A61780"></span>Eric Del Guerra</p>
+                    <p style="font-size: 1rem; text-align: center"><span>Developpeur Junior - </span><span>26 ans - </span><span>Grenoble</span></p>
+                    <hr>
+                    <p style="color: gray; text-align:left; font-size: 1rem; letter-spacing: normal"><span>Je recherche
+                        pour l'année prochaine une
+                        alternance pour une formation de développement mobile</span></p>
+
+                    <div class="column text-left" style="margin-top: 1.7rem">
+                        <v-btn style="margin:0.5rem;" small outlined rounded color="info"
+                               @click="motivationView('skills')">
+                            <v-icon size="medium" color="info" left>mdi-book-open-page-variant</v-icon>  Compétences
+                        </v-btn>
+                        <v-btn style="margin:0.5rem;" small outlined rounded color="info"
+                               @click="motivationView('motivation')">
+                            <v-icon size="medium" color="info" left>mdi-account-card-details</v-icon>Motivations
+                        </v-btn>
+                    </div>
+                    <hr>
+                    <!--                    <div class="column text-left">-->
+
+                    <!--                    </div>-->
+                </div>
+
             </div>
-            <section id="seriousMobile" class="hero is-medium is-serious" @click="motivationView('motivation')">
-                <div class="hero-body">
-                </div>
-                <div class="text-right">
-                    <!--                    <v-icon color="black" style="transform: rotate(-90deg)" small>mdi-arrow-down-bold-circle</v-icon>-->
-                </div>
-            </section>
 
 
-            <div class="container">
-                <!--                <h2 class="text-center mobileTitle">Compétences</h2>-->
-            </div>
-
-            <section id="funMobile" class="hero is-medium is-serious" @click="motivationView('skills')">
-                <div class="hero-body">
-                </div>
-                <div class="text-right">
-                    <!--                    <v-icon color="black" style="transform: rotate(-90deg);" small>mdi-arrow-down-bold-circle</v-icon>-->
-                </div>
-            </section>
-
-
-            <div class="overflow-hidden" style="margin: 2rem; margin-bottom: 0">
+            <div class="overflow-hidden">
                 <v-bottom-navigation
                         :input-value="showNav"
                         color="secondary"
                         grow
-                        :fixed="false"
+                        :fixed="true"
                 >
                     <v-btn style="margin-top: 0.5rem;" @click="goToLinkeidn">
-                        <v-icon>mdi-linkedin</v-icon>
+                        <v-icon color="info">mdi-linkedin</v-icon>
                     </v-btn>
                     <v-btn style="margin-top: 0.5rem;" @click="sendMail">
-                        <v-icon>mdi-email</v-icon>
+                        <v-icon color="info">mdi-email</v-icon>
                     </v-btn>
                     <v-btn style="margin-top: 0.5rem;" @click="goToGithub">
-                        <v-icon>mdi-github-circle</v-icon>
+                        <v-icon color="info">mdi-github-circle</v-icon>
                     </v-btn>
                 </v-bottom-navigation>
             </div>
@@ -306,11 +330,12 @@
         border: solid black 2px;
         width: 80%;
         margin: auto;
-        filter: grayscale(1);
-        background-image: url('../assets/seriously.jpg');
-        background-repeat: no-repeat;
-        background-size: cover;
-        background-position: right 50% bottom 75%;
+        /*filter: grayscale(1);*/
+        padding-top: 2rem;
+        /*background-image: url('../assets/seriously.jpg');*/
+        /*background-repeat: no-repeat;*/
+        /*background-size: cover;*/
+        /*background-position: right 50% bottom 75%;*/
         transition-duration: 0.7s;
         box-shadow: 4px 1px 5px black;
 
@@ -319,7 +344,7 @@
             box-shadow: none;
             background-image: url("../assets/motivation.png");
             filter: none;
-            background-color: white;
+            background-color: transparent;
             border: none;
             animation: none;
             margin-top: 0;
@@ -545,6 +570,16 @@
     button {
         font-family: Consolas;
     }
+
+    .skill {
+        font-family: Consolas;
+        font-size: 2rem;
+        margin: 1rem;
+    }
+
+    /*.mobileBackground {*/
+    /*    background: linear-gradient( #343434, rgba(136, 136, 136, 0.99));*/
+    /*}*/
 
 </style>
 <!-- Add "scoped" attribute to limit CSS to this component only -->

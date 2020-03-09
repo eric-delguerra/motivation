@@ -4,7 +4,7 @@
             <v-icon>mdi-home</v-icon>
         </v-btn>
         <div class="is-mobile is-top" style="margin-left: 1rem; margin-top: 3rem">
-            <h1 class="is-size-2 font-weight-bold font-italic column is-offset-5 titre"
+            <h1 v-if="enterpriseName !== 'LinkedIn'" class="is-size-2 font-weight-bold font-italic column is-offset-5 titre"
                 :style="{color: fontColors, textShadow: fontBorder}">Hey <h1
                     class="underline is-size-2 font-weight-bold font-italic"
                     :style="{backgroundImage: underlineColor, color: fontColors, textShadow: fontBorder}">
