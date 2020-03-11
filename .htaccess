@@ -28,6 +28,10 @@ RewriteEngine On
 RewriteCond %{SERVER_PORT} 80
 RewriteRule ^(.*)$ https://eric-delguerra.fr/$1 [R,L]
 
+<FilesMatch "\.pdf$">
+ForceType applicaton/octet-stream
+Header set Content-Disposition attachment
+</FilesMatch>
 <IfModule mod_expires.c>
 	ExpiresActive On
 	ExpiresDefault "access plus 7200 seconds"

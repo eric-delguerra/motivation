@@ -13,11 +13,11 @@ const routes = [
         name: 'home',
         component: Home
     },
-    // {
-    //     path: '/:name',
-    //     name: 'home',
-    //     component: Home
-    // },
+    {
+        path: '/:name',
+        name: 'home',
+        component: Home
+    },
     {
         path: '/:name', redirect: Home => {
             let url = new URL(window.location.href);
@@ -30,18 +30,18 @@ const routes = [
     },
     {
         path: '/page/skills',
-        name: 'Fun',
+        name: 'skills',
         component: Fun
     },
     {
         path: '/page/motivation',
-        name: 'Serious',
+        name: 'motivation',
         component: Serious,
     },
-    {
-        path: '*',
-        redirect: Home
-    }
+    // {
+    //     path: '*',
+    //     redirect: Home
+    // }
 ];
 
 const router = new VueRouter({

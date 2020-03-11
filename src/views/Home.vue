@@ -6,10 +6,10 @@
             <div class="columns" style="height: 90vh">
                 <div class="column is-two-fifths">
                     <img v-if="!mobileWidth" src="../assets/fun.jpg" alt=""
-                         style="filter: grayscale(1); height: 95vh">
+                         style="filter: grayscale(1); height: 100vh">
                 </div>
                 <div class="column is-half">
-                    <div style="height: 30vh"></div>
+                    <div style="height: 15vh"></div>
                     <div class="container">
                         <vue-typer style="font-size: 5rem; margin-top: 25rem; padding-bottom: 2rem"
                                    text='Eric Del Guerra ' :repeat='0' caret-animation='smooth'
@@ -30,27 +30,33 @@
                             license en
                             dévellopement mobile et interface nomade.<br> <br></p>
 
-                        <p @click="motivationView('skills')" style="cursor: pointer; width: 30%; font-size: 1.1rem">
-                            <v-icon size="x-large" color="accent">mdi-book-open-page-variant</v-icon>
-                            Mes compétences <br></p>
-                        <p @click="motivationView('motivation')"
+                        <span @click="motivationView('skills')" style="cursor: pointer; width: 30%; font-size: 1.1rem; margin-bottom: .8rem">
+                            <v-icon size="x-large" color="accent">mdi-book-account-outline</v-icon>
+                            Mes compétences </span><br>
+                        <span @click="motivationView('motivation')"
                            style="cursor: pointer; margin-top: 1rem; width: 30%; font-size: 1.1rem">
-                            <v-icon size="x-large" color="accent">mdi-account-card-details</v-icon>
+                            <v-icon size="x-large" color="accent">mdi-book-open-page-variant</v-icon>
                             Mes motivations
-                        </p>
-                        <div style="margin-top: 5rem">
-                            <p @click="sendMail" style="cursor: pointer">Contactez moi
+                        </span>
+                        <div style="margin-top: 3rem; z-index: 5!important;" class="text-right">
+                            <span @click="sendMail" style="cursor: pointer">Contactez-moi
                                 <v-icon color="accent" size="large">mdi-email</v-icon>
-                            </p>
-                            <p @click="goToGithub" style="cursor: pointer">Mon Github
-                                <v-icon color="accent" size="large">mdi-github-circle</v-icon>
-                            </p>
+                            </span><br>
+                            <span @click="goToGithub" style="cursor: pointer">Mon Github
+                                <v-icon color="accent" size="large">mdi-github</v-icon>
+                            </span><br>
+                            <a href="../../public/Eric_Del_Guerra_CV.pdf" target="_blank" style="cursor: pointer; color: black" @click="CvView">Mon CV en pdf
+                                <v-icon color="accent" size="large">mdi-file-pdf-outline</v-icon>
+                            </a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
 
+        <v-footer v-if="!mobileWidth" fixed padless color="accent" class="font-weight-medium" style="z-index: 0!important;">
+            <v-col cols="12" class="text-center" style="color: white">2020 - Eric Del Guerra</v-col>
+        </v-footer>
         <div v-else :style="{height: window.height + 'px'}" style="" class="mobileBackground">
 
             <!--            <div class="container" style="">-->
@@ -77,31 +83,35 @@
             <!--                    <p class="skill">Compétence</p>-->
             <!--                </div>-->
             <!--            </section>-->
-            <div class="container" style="top: 10vh">
+
+            <div class="container" style="top: 8vh">
                 <div class="column">
                     <p style=" text-align: center; font-size: 2rem;margin-bottom: 1rem;"><span style="color: #A61780"></span>Eric Del Guerra</p>
                     <p style="font-size: 1rem; text-align: center"><span>Developpeur Junior - </span><span>26 ans - </span><span>Grenoble</span></p>
                     <hr>
-                    <p style="color: gray; text-align:left; font-size: 1rem; letter-spacing: normal"><span>Je recherche
+                    <p style="color: gray; text-align:justify; font-size: 1rem; letter-spacing: normal"><span>Je recherche
                         pour l'année prochaine une
-                        alternance pour une formation de développement mobile</span></p>
+                        alternance pour la formation développement et interface mobile à l'IUT 1 de Grenoble</span></p>
 
-                    <div class="column text-left" style="margin-top: 1.7rem">
+                    <div class="column has-text-centered" style="margin-top: 1.7rem">
                         <v-btn style="margin:0.5rem;" small outlined rounded color="info"
                                @click="motivationView('skills')">
-                            <v-icon size="medium" color="info" left>mdi-book-open-page-variant</v-icon>  Compétences
+                            <v-icon size="medium" color="info" left>mdi-school</v-icon>Compétences
                         </v-btn>
                         <v-btn style="margin:0.5rem;" small outlined rounded color="info"
                                @click="motivationView('motivation')">
-                            <v-icon size="medium" color="info" left>mdi-account-card-details</v-icon>Motivations
+                            <v-icon size="medium" color="info" left>mdi-book-open-page-variant</v-icon>Motivations
+                        </v-btn>
+
+                    </div>
+                    <div class="column has-text-centered">
+                        <v-btn small outlined rounded color="info" @click="CvView">
+                            <a href="../../public/Eric_Del_Guerra_CV.pdf" target="_blank" style="cursor: pointer;color:#A61780 ">
+                                <v-icon color="info" size="large" left>mdi-file-pdf-outline</v-icon>Mon CV.pdf
+                            </a>
                         </v-btn>
                     </div>
-                    <hr>
-                    <!--                    <div class="column text-left">-->
-
-                    <!--                    </div>-->
                 </div>
-
             </div>
 
 
@@ -119,14 +129,11 @@
                         <v-icon color="info">mdi-email</v-icon>
                     </v-btn>
                     <v-btn style="margin-top: 0.5rem;" @click="goToGithub">
-                        <v-icon color="info">mdi-github-circle</v-icon>
+                        <v-icon color="info">mdi-github</v-icon>
                     </v-btn>
                 </v-bottom-navigation>
             </div>
         </div>
-        <v-footer v-if="!mobileWidth" fixed color="accent" class="font-weight-medium">
-            <v-col cols="12" class="text-center" style="color: white">2020 - Eric Del Guerra</v-col>
-        </v-footer>
     </div>
 
 </template>
@@ -209,7 +216,7 @@
                 }
             },
             motivationView(view) {
-                this.$router.push('page/' + view)
+                this.$router.push({name: view})
                 this.fireCall(view)
             },
             fireCall(value) {
@@ -242,6 +249,13 @@
             sendMail() {
                 window.open(this.email)
             },
+            CvView(){
+                let db = firebase.firestore()
+                db.collection("CvConsult").add({
+                    name: this.enterpriseName === '' ? "Anonyme" : this.enterpriseName,
+                    created_at: new Date()
+                })
+            }
         },
         computed: {
             underlineColor() {
@@ -253,7 +267,8 @@
                 } else {
                     return false
                 }
-            }
+            },
+
         },
         destroyed() {
             window.removeEventListener('resize', this.handleResize)

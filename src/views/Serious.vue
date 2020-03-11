@@ -5,7 +5,7 @@
             <v-icon>mdi-home</v-icon>
         </v-btn>
         <div class="is-mobile is-top-right" style="margin-top: 3rem">
-            <h1 v-if="enterpriseName !== 'LinkedIn'" class="is-size-2 font-weight-bold font-italic column  titre"
+            <h1 v-if="enterpriseName !== 'LinkedIn' || enterpriseName !== ''" class="is-size-2 font-weight-bold font-italic column  titre"
                 :style="{color: fontColors, textShadow: fontBorder}">Bonjour <h1
                     class="underline is-size-2 font-weight-bold font-italic"
                     :style="{backgroundImage: underlineColor, color: fontColors, textShadow: fontBorder}">
@@ -104,7 +104,7 @@
                         align: 'center',
                         paragraf: '" Je recherche une alternance "',
                         paragrafTitle: 'Présentation',
-                        paragrafContent: 'Je m\'appelle Eric, je vis sur Grenoble et je recherche une entreprise pour une future alternance en Service Mobiles et Interface Nomade.',
+                        paragrafContent: 'Je m\'appelle Eric, je vis sur Grenoble et je recherche une entreprise pour une future alternance en Service Mobile et Interface Nomade.',
                         col: 5,
                         active: 1
                     },
@@ -114,7 +114,7 @@
                         align: 'center',
                         paragraf: '" Je suis actuellement en formation "',
                         paragrafTitle: 'Aujourd\'hui',
-                        paragrafContent: 'Je suis actuellement en formation au Campus Numérique in The Alps, j\'ai commencé cette formation en fin d\'année 2018 et je suis en ce moment et jusqu\'à ma soutenance en alternance chez BSM / IZYFLOW à Montbonnot.',
+                        paragrafContent: 'Je suis actuellement en formation au Campus Numérique in The Alps, j\'ai commencé cette formation en fin d\'année 2018 et je suis en ce moment en alternance chez BSM / IZYFLOW à Montbonnot jusqu\'à ma soutenance, le 17/18 juin 2020.',
                         col: 7,
                         active: 0
 
@@ -125,7 +125,7 @@
                         align: 'center',
                         paragraf: '" Une montée en compétences "',
                         paragrafTitle: 'Je souhaite',
-                        paragrafContent: 'Aujourd\'hui j\'aimerai continué de me former au métier du Web et me spécialiser en intégration mobile.Une année suplémentaire me permettrai une montée en compétences et une réelle validation de celles-ci. A l\'avenir j\'aimerai confier de mon temps et transmettre ce que j\'ai appris à de nouvelles personnes.',
+                        paragrafContent: 'Aujourd\'hui j\'aimerais continuer de me former au métier du Web et me spécialiser en intégration mobile. Une année suplémentaire me permettrait une montée en compétences et une réelle validation de celles-ci. A l\'avenir j\'aimerais accorder de mon temps et transmettre ce que j\'ai appris à de nouvelles personnes.',
                         col: 5,
                         active: 0
                     },
@@ -135,7 +135,7 @@
                         align: 'center',
                         paragraf: '" Ma curiosité m\'a permis également d\'en apprendre plus "',
                         paragrafTitle: 'Mes compétences',
-                        paragrafContent: 'Je suis plutôt à l\'aise en Back-End, j\'aimerais acquérir de fortes compétences en intégration par la suite. Je suis à l\'aise en Javascript ainsi que VueJS. Pendant mon alternance je travail sur une application en PHP Slim. Ma formation m\'a également permise d\'apprehender d\'autres langages comme le C# et JAVA. Ma curiosité m\'a permis également d\'en apprendre plus en C# avec le logiciel Unity. La mise en place de test (unitaire et fonctionnel) est également dans mon cursus mais nous n\'avons pas eu des gros module dessus.',
+                        paragrafContent: 'Je suis plutôt à l\'aise en Back-End, j\'aimerais acquérir de fortes compétences en intégration par la suite. Je suis à l\'aise en Javascript ainsi que VueJS. Pendant mon alternance je travaille sur une application en PHP Slim et VueJS. Ma formation m\'a également permis d\'appréhender d\'autres langages comme le C# et JAVA et ma curiosité d\'en apprendre plus en C# avec le logiciel Unity. La mise en place de tests (unitaires et fonctionnels) est aussi présente dans mon cursus mais nous n\'avons pas eu de module important pour les approfondir.',
                         col: 7,
                         active: 0
                     },
@@ -146,7 +146,7 @@
                         align: 'center',
                         paragraf: 'Je suis très assidu dans ce que je fais',
                         paragrafTitle: 'Pourquoi moi ?',
-                        paragrafContent: 'Je suis une personne très curieuse et très sociable. J\'aime travailler en groupe, je suis très assidu dans ce que je fais. Avec un certain recul je pense être force de proposition quand une idée me semble pertinante. Je reconnais facilement mes forces et mes faiblesses, ce qui me permet d\'apprendre vite et de me mettre au travail efficassement.',
+                        paragrafContent: 'Je suis une personne curieuse et sociable. J\'aime travailler en groupe, je suis très assidu dans ce que je fais. Avec un certain recul je pense être force de proposition quand une idée me semble pertinante. Je reconnais facilement mes forces et mes faiblesses, ce qui me permet d\'apprendre vite et d\'être efficace.',
                         col: 5,
                         active: 0
                     },
