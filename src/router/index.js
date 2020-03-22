@@ -13,11 +13,11 @@ const routes = [
         name: 'home',
         component: Home
     },
-    {
-        path: '/:name',
-        name: 'home',
-        component: Home
-    },
+    // {
+    //     path: '/:name',
+    //     name: 'home',
+    //     component: Home
+    // },
     {
         path: '/:name', redirect: Home => {
             let url = new URL(window.location.href);

@@ -28,7 +28,7 @@
                             Je suis actuellement à la recherche d'une alternance à partir de septembre 2020 pour faire
                             une
                             license en
-                            dévellopement mobile et interface nomade.<br> <br></p>
+                            dévellopement mobile et interface nomade à l'IUT 1 de Grenoble.<br> <br></p>
 
                         <span @click="motivationView('skills')" style="cursor: pointer; width: 30%; font-size: 1.1rem; margin-bottom: .8rem">
                             <v-icon size="x-large" color="accent">mdi-book-account-outline</v-icon>

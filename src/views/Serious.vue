@@ -5,11 +5,12 @@
             <v-icon>mdi-home</v-icon>
         </v-btn>
         <div class="is-mobile is-top-right" style="margin-top: 3rem">
-            <h1 v-if="enterpriseName !== 'LinkedIn' || enterpriseName !== ''" class="is-size-2 font-weight-bold font-italic column  titre"
+            <h1 v-if="helloOrNotHello" class="is-size-2 font-weight-bold font-italic column  titre"
                 :style="{color: fontColors, textShadow: fontBorder}">Bonjour <h1
                     class="underline is-size-2 font-weight-bold font-italic"
                     :style="{backgroundImage: underlineColor, color: fontColors, textShadow: fontBorder}">
                 {{enterpriseName}}</h1></h1>
+            <h1 v-else class="is-size-2 column is-offset-5 titre">Mes motivations </h1>
         </div>
         <template v-if="window.width > 800">
             <v-container>
@@ -104,7 +105,7 @@
                         align: 'center',
                         paragraf: '" Je recherche une alternance "',
                         paragrafTitle: 'Présentation',
-                        paragrafContent: 'Je m\'appelle Eric, je vis sur Grenoble et je recherche une entreprise pour une future alternance en Service Mobile et Interface Nomade.',
+                        paragrafContent: 'Je m\'appelle Eric, je vis sur Grenoble et je recherche une entreprise pour une future alternance en Service Mobile et Interface Nomade à l\'IUT 1 de Grenoble.',
                         col: 5,
                         active: 1
                     },
@@ -146,16 +147,16 @@
                         align: 'center',
                         paragraf: 'Je suis très assidu dans ce que je fais',
                         paragrafTitle: 'Pourquoi moi ?',
-                        paragrafContent: 'Je suis une personne curieuse et sociable. J\'aime travailler en groupe, je suis très assidu dans ce que je fais. Avec un certain recul je pense être force de proposition quand une idée me semble pertinante. Je reconnais facilement mes forces et mes faiblesses, ce qui me permet d\'apprendre vite et d\'être efficace.',
+                        paragrafContent: 'Je suis une personne curieuse et sociable. J\'aime travailler en groupe, je suis très assidu dans ce que' +
+                            ' je fais. Avec un certain recul je pense être force de proposition quand une idée me semble pertinante. Je reconnais facilement mes forces et mes faiblesses,' +
+                            ' ce qui me permet d\'apprendre vite et d\'être efficace.',
                         col: 5,
                         active: 0
                     },
                 ],
                 colorsArray: [
                     '#05F2DB',
-                    // '#0388A6',
                     '#F205CB',
-                    // '#A61780'
                 ],
                 fontColors: 'black',
                 fontBorder: '',
@@ -167,13 +168,14 @@
             }
         },
         created() {
-            this.enterpriseName = localStorage.getItem("name")
-            this.randomColor = this.getRandomColor()
+            this.enterpriseName = localStorage.getItem("name");
+            this.enterpriseName == null ? this.enterpriseName = ' ' : null;
+            this.randomColor = this.getRandomColor();
             if (this.randomColor === '#0388A6' || this.randomColor === '#A61780') {
-                this.fontColors = 'white'
+                this.fontColors = 'white';
                 this.fontBorder = '-1px 0 black, 0 1px black, 1px 0 black, 0 -1px black'
             }
-            window.addEventListener('resize', this.handleResize)
+            window.addEventListener('resize', this.handleResize);
             this.handleResize();
             if (parseInt(localStorage.getItem("firstPassage")) > 3) {
                 for (let i = 0; i < this.paragrafs.length; i++) {
@@ -205,7 +207,7 @@
             },
             nextParagraf() {
                 if (this.whichInfo < 5) {
-                    this.whichInfo += 1
+                    this.whichInfo += 1;
                     this.menu(this.whichInfo)
                 }
             }
@@ -214,7 +216,18 @@
             underlineColor() {
                 return 'linear-gradient(\n transparent 28%, ' + this.randomColor + ' 28%, ' + this.randomColor + ' 55%, transparent 55%)'
             },
-
+            helloOrNotHello(){
+                switch (this.enterpriseName) {
+                    case "":
+                        return false
+                    case " ":
+                        return false
+                    case "LinkedIn":
+                        return false
+                    default :
+                        return true
+                }
+            }
         },
         destroyed() {
             window.removeEventListener('resize', this.handleResize)
@@ -233,7 +246,7 @@
     }
 
     .selectedMenu {
-        transition-duration: .4s;
+        transition-duration: .3s;
         border-bottom: solid .45rem #F205CB;
         padding-top: 1.3rem !important;
         /*border-width: .3rem;*/
@@ -263,7 +276,7 @@
         p {
             font-size: 1.2rem;
             text-align: justify;
-            animation: ease-in-out .5s;
+            animation: ease-in-out .4s;
             border-bottom: solid .2rem #0388A6;
             padding-bottom: 2rem;
 

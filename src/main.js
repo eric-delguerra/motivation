@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import App from './App.vue'
-import firebase from "firebase";
+import firebase from "firebase/app";
+import 'firebase/database';
 import router from './router'
 import Buefy from 'buefy'
 import './../node_modules/bulma/css/bulma.css';
