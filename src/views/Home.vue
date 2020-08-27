@@ -6,29 +6,29 @@
             <div class="columns" style="height: 90vh">
                 <div class="column is-two-fifths">
                     <img v-if="!mobileWidth" src="../assets/fun.jpg" alt=""
-                         style="filter: grayscale(1); height: 100vh">
+                         style="filter: grayscale(1); height: 100vh; object-fit: cover">
                 </div>
                 <div class="column is-half">
                     <div style="height: 15vh"></div>
                     <div class="container">
                         <vue-typer style="font-size: 5rem; margin-top: 25rem; padding-bottom: 2rem"
                                    text='Eric Del Guerra ' :repeat='0' caret-animation='smooth'
-                                   :type-delay='202'
+                                   :type-delay='150'
                                    erase-style='backspace'></vue-typer>
 
                         <hr>
                         <p style="width: 65%; font-size: 1.3rem">
                             <vue-typer
                                     :text='["Développeur junior", "26 ans", "Grenoble"]' caret-animation='smooth'
-                                    :type-delay='150'
+                                    :type-delay='100'
                                     erase-style='backspace'></vue-typer>
 
                         </p>
                         <p style="font-size: 1.1rem">
                             Je suis actuellement à la recherche d'une alternance à partir de septembre 2020 pour faire
                             une
-                            license en
-                            dévellopement mobile et interface nomade à l'IUT 1 de Grenoble.<br> <br></p>
+                            licence en
+                            développement mobile et interface nomade à l'IUT 1 de Grenoble.<br> <br></p>
 
                         <span @click="motivationView('skills')" style="cursor: pointer; width: 30%; font-size: 1.1rem; margin-bottom: .8rem">
                             <v-icon size="x-large" color="accent">mdi-book-account-outline</v-icon>
@@ -221,6 +221,9 @@
             },
             fireCall(value) {
                 let db = firebase.firestore()
+                if (this.enterpriseName === undefined) {
+                    this.enterpriseName = "Anonyme"
+                }
                 db.collection("analytics").add({
                     name: this.enterpriseName,
                     style: value,
@@ -246,13 +249,13 @@
             goToGithub() {
                 window.open(this.gitHubLink)
             },
-            sendMail() {
-                window.open(this.email)
-            },
             CvView(){
                 let db = firebase.firestore()
+                if (this.enterpriseName === undefined) {
+                    this.enterpriseName = "Anonyme"
+                }
                 db.collection("CvConsult").add({
-                    name: this.enterpriseName === '' ? "Anonyme" : this.enterpriseName,
+                    name: this.enterpriseName,
                     created_at: new Date()
                 })
             }

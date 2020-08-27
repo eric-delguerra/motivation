@@ -148,7 +148,7 @@
                         paragraf: 'Je suis très assidu dans ce que je fais',
                         paragrafTitle: 'Pourquoi moi ?',
                         paragrafContent: 'Je suis une personne curieuse et sociable. J\'aime travailler en groupe, je suis très assidu dans ce que' +
-                            ' je fais. Avec un certain recul je pense être force de proposition quand une idée me semble pertinante. Je reconnais facilement mes forces et mes faiblesses,' +
+                            ' je fais. Je pense également être force de proposition quand une idée me semble pertinente. Je reconnais facilement mes forces et mes faiblesses,' +
                             ' ce qui me permet d\'apprendre vite et d\'être efficace.',
                         col: 5,
                         active: 0
